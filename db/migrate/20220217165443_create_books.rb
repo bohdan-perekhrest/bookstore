@@ -5,9 +5,11 @@ class CreateBooks < ActiveRecord::Migration[6.1]
     create_table :books do |t|
       t.string :name
       t.float :price
+      t.text :short_description
+      t.text :full_description
+      t.string :image_data
       t.timestamps
     end
-    add_reference :books, :author_id, index: true, foreign_key: true
-    add_reference :books, :category_id, index: true, foreign_key: true
+    add_reference :books, :category, index: true, foreign_key: true
   end
 end
