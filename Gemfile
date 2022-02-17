@@ -7,6 +7,7 @@ ruby '3.0.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
 gem 'pg', '~> 1.1'

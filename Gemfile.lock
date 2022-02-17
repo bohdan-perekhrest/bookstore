@@ -77,6 +77,9 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    haml (5.2.2)
+      temple (>= 0.8.0)
+      tilt
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -160,6 +163,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -189,6 +193,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   bootstrap-sass (~> 3.4.1)
   byebug
+  haml (~> 5.2, >= 5.2.2)
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
