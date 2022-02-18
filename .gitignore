@@ -19,3 +19,4 @@ yarn-debug.log*
 .yarn-integrity
 .idea/*
 .idea
+public/uploads
