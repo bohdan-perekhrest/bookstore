@@ -7,6 +7,7 @@ ruby '3.0.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'jbuilder', '~> 2.7'
