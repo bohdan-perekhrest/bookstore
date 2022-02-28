@@ -1,2 +1,30 @@
+inherit_from: .rubocop_todo.yml
+
+require: 
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'config/initializer/*'
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
 Style/Documentation:
   Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializer/*'
