@@ -21,7 +21,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    if @order_item.delete  && current_order.save
+    if @order_item.delete && current_order.save
       redirect_to order_index_path, notice: 'Book was removed!'
     else
       redirect_to order_index_path, alert: 'Book was not removed!'
@@ -38,4 +38,3 @@ class OrderItemsController < ApplicationController
     params.require(:order_item).permit(:book_id, :quantity)
   end
 end
-

@@ -11,4 +11,12 @@ class Review < ApplicationRecord
   validates :status, acceptance: { accept: %w[approved rejected unprocessed] }
 
   scope :approved, -> { where(status: 'approved').order(created_at: :desc) }
+
+  before_save :status
+
+  private
+
+  def status(status = 'unprocessed')
+    self[:status] = status
+  end
 end

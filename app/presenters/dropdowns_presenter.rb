@@ -8,7 +8,7 @@ class DropdownsPresenter < BasePresenter
     price_down: 'Price: High to low',
     a_z: 'Title A - Z',
     z_a: 'Title Z - A'
-  }
+  }.freeze
 
   attr_reader :filter
 

@@ -7,4 +7,3 @@ class Delivery < ApplicationRecord
   validates :price, numericality: { minimum: 0.01 }
   validates :name, length: { in: 3..100 }
 end
-

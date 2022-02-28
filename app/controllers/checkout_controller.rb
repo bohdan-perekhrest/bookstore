@@ -9,6 +9,7 @@ class CheckoutController < ApplicationController
 
   def show
     return redirect_to books_path if no_items_in_cart?
+
     send("show_#{step}") unless step == 'wicked_finish'
     render_wizard
   end
@@ -23,6 +24,4 @@ class CheckoutController < ApplicationController
   def no_items_in_cart?
     current_order.order_items.empty? && step != :complete
   end
-  
 end
-

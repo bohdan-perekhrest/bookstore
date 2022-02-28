@@ -9,4 +9,3 @@ module FullNameHelper
     "#{object.city} #{object.zip}"
   end
 end
-

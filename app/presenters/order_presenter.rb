@@ -27,6 +27,4 @@ class OrderPresenter < BasePresenter
     template = 'R0000000'
     template[0..-id.size] + id
   end
-
 end
-

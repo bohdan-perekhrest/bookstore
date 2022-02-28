@@ -10,12 +10,12 @@ class Order < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_one :billing
   has_one :shipping
-  
-  validates :status, presence: true, acceptance: {accept: %w[in_progress in_queue]}
+
+  validates :status, presence: true, acceptance: { accept: %w[in_progress in_queue] }
 
   scope :proccesing_order, -> { where(status: 'in_queue').order('updated_at').last }
 
-  before_validation :set_order_status, on: :create
+  before_validation :order_status, on: :create
   before_save :update_subtotal, :update_total, :connect_user
 
   def subtotal
@@ -32,12 +32,12 @@ class Order < ApplicationRecord
 
   def finilize
     set_order_status('in_queue')
-    self.save!
+    save!
   end
 
   private
 
-  def set_order_status(status = 'in_progress')
+  def order_status(status = 'in_progress')
     self[:status] = status
   end
 
@@ -53,4 +53,3 @@ class Order < ApplicationRecord
     self[:total] = total
   end
 end
-

@@ -19,4 +19,3 @@ class OrderItem < ApplicationRecord
     self[:total_price] = total_price
   end
 end
-

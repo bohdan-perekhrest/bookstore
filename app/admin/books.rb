@@ -29,7 +29,7 @@ ActiveAdmin.register Book do
       f.inputs 'Image' do
         f.input :image, as: :file
       end
-      f.input :published_at, as: :select, collection: (1900..Time.now.year).to_a
+      f.input :published_at, as: :select, collection: (1900..Time.zone.now.year).to_a
       f.input :height
       f.input :width
       f.input :depth

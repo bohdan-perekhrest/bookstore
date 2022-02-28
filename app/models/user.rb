@@ -26,9 +26,9 @@ class User < ApplicationRecord
   #     end
   #   end
   # end
-  
+
   def order_in_progress
-    self.orders.where(status: 'in_progress').first
+    orders.where(status: 'in_progress').first
   end
 
   def self.from_omniauth(auth)

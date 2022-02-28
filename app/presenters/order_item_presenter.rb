@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class OrderItemPresenter < BasePresenter
-
   attr_reader :item
 
   def initialize(item)
@@ -9,7 +8,6 @@ class OrderItemPresenter < BasePresenter
   end
 
   def short_description
-    item.book.description.split('. ').first + '.'
+    "#{item.book.description.split('. ').first}."
   end
 end
-

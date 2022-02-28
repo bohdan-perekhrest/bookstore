@@ -19,7 +19,7 @@ module CurrentSession
   end
 
   def current_order
-    @order ||= Order.find_by(id: order_id)
+    @current_order ||= Order.find_by(id: order_id)
   end
 
   def set_current_user

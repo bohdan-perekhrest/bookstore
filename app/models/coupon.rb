@@ -7,4 +7,3 @@ class Coupon < ApplicationRecord
   validates :code, uniqueness: true
   validates :value, numericality: { only_float: true }
 end
-
