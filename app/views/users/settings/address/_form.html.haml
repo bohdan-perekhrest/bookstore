@@ -1,0 +1,27 @@
+= simple_form_for(:address, url: address_path, method: :patch) do |f|
+  - presenter = AddressPresenter.new(current_user, type)
+  = f.hidden_field :type, value: type
+  .form-group
+    = f.label :first_name, class: 'control-label input-label'
+    = f.text_field :first_name, value: presenter.first_name, class: 'form-control', id: 'firstName', placeholder: 'First Name', required: true
+    %span.help-block Please enter your first name
+  .form-group
+    = f.label :last_name, class: 'control-label input-label'
+    = f.text_field :last_name, value: presenter.last_name, class: 'form-control', id: 'lastName', placeholder: 'Last Name', required: true
+  .form-group
+    = f.label :address, class: 'control-label input-label'
+    = f.text_field :address, value: presenter.address, class: 'form-control', id: 'address', placeholder: 'Address', required: true
+  .form-group
+    = f.label :city, class: 'control-label input-label'
+    = f.text_field :city, value: presenter.city, class: 'form-control', id: 'city', placeholder: 'City', required: true
+  .form-group
+    = f.label :zip, class: 'control-label input-label'
+    = f.text_field :zip, value: presenter.zip, class: 'form-control', id: 'zip', placeholder: 'Zip', required: true
+  .form-group
+    = f.label :country, class: 'control-label input-label'
+    = f.country_select :country, {include_blank: 'Select a Country', selected: presenter.country}, class: 'form-control', id: 'country', placeholder: 'Country', required: true
+  .form-group.mb-60
+    = f.label :phone, class: 'control-label input-label'
+    = f.text_field :phone, value: presenter.phone, class: 'form-control', id: 'phone', placeholder: 'Example +380994448811', required: true
+  .text-center.general-text-align
+    = f.submit 'Save', class: 'btn btn-default'

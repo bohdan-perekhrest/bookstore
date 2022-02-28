@@ -1,0 +1,12 @@
+%p.general-address
+  = full_name(address)
+  - if step != :complete
+    = link_to t('confirm.edit'), wizard_path(:addresses), class: 'general-edit clickable-step'
+  %br
+  = address.address
+  %br
+  = city_zip(address) 
+  %br
+  = country_name address
+  %br
+  = 'Phone ' + address.phone

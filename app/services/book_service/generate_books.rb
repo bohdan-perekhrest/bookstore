@@ -2,7 +2,6 @@
 
 module BookService
   class GenerateBooks < ApplicationService
-
     attr_reader :params
 
     def initialize(params)
@@ -13,7 +12,6 @@ module BookService
     def call
       generate_books
     end
-    
 
     private
 
@@ -24,7 +22,7 @@ module BookService
     end
 
     def by_category
-      @books = @books.where(category_id: category_id)
+      @books = BooksQuery.new(@books).by_category(category_id)
     end
 
     def by_filter
@@ -36,21 +34,21 @@ module BookService
     end
 
     def pagination
-      @pagy, @books = pagy(@books, page: page)
-      @books = set_books
-      [@pagy, @books]
+      pagy, @books = pagy(@books, page: page)
+      books = set_books
+      [pagy, books]
     end
 
     def category_id
-      @params[:category_id]
+      params[:category_id]
     end
 
     def page
-      @params[:page] || 1
+      params[:page] || 1
     end
 
     def filter
-      @params[:filter]
+      params[:filter]
     end
   end
 end

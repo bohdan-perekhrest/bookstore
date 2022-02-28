@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  = render partial: 'progress'
+  %h3.general-subtitle= t('delivery.delivery_method')
+  = form_for current_order, url: wizard_path do |f|
+    .visible-xs
+      = render partial: 'checkout/delivery-xs', locals: {f: f} if false
+    .hidden-xs.mb-res-50
+      = render partial: 'checkout/delivery-lg', locals: {f: f}
+    = render 'checkout/order_summary', locals: {order: current_order}
+    .text-center
+      = f.submit t('checkout.save_and_continue'), class: 'btn btn-default mb-20'

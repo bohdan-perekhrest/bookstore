@@ -1,14 +1,19 @@
+- presenter = DropdownsPresenter.new(params[:filter])
 .dropdowns.pull-right
   .dropdown.width-240
     %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false", 'id': "dropdownMenuButton1", 'data-bs-toggle': "dropdown"}
-      = params[:filter] ? params[:filter] : 'Newest first'
+      = presenter.main_text
       %i.fa.fa-angle-down.dropdown-icon.pull-right
     %ul.dropdown-menu{'aria-labelledby': "dropdownMenuButton1"}
       %li
-        = link_to 'Newest first', books_path(filter: 'newest', category_id: params[:category_id])
+        = link_to t('button.newest_first'), books_path(filter: :newest)
       %li
-        = link_to 'Popular first', books_path(filter: 'popular', category_id: params[:category_id])
+        = link_to t('button.popular_first'), books_path(filter: :popular)
       %li
-        = link_to 'Price Low to High', books_path(filter: 'price_up', category_id: params[:category_id])
+        = link_to t('button.low_to_hight'), books_path(filter: :price_up)
       %li
-        = link_to 'Price High to Low', books_path(filter: 'price_down', category_id: params[:category_id])
+        = link_to t('button.hight_to_low'), books_path(filter: :price_down)
+      %li
+        = link_to t('button.title_A-Z'), books_path(filter: :a_z)
+      %li
+        = link_to t('button.title_Z-A'), books_path(filter: :z_a)

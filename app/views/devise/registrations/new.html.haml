@@ -1,19 +1,22 @@
 %main.container.general-main-wrap
   .text-center
     %h3.general-login-title Sign Up
-    %a.general-login-icon{href: "#"}
+    = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
       %i.fa.fa-facebook-official
     %p.general-login-text or
-  = simple_form_for(:user, url: user_registration_path, html: { class: 'general-form'} ) do |f|
+  = simple_form_for(:user, url: user_registration_path,  html: { class: 'general-form'}) do |f|
     .form-group.mb-30
       = f.label :email, class: 'control-label input-label', require: 'true'
       = f.email_field :email, placeholder: 'Enter Email', class: 'form-control', id:'email'
+      = f.error_notification
     .form-group.mb-30
       = f.label :password, class: 'control-label input-label'
       = f.password_field :password, class: 'form-control', id: 'password', placeholder: 'Enter Password'
+      = f.error :password
     .form-group.mb-30
       = f.label :password_confirmation, class: 'control-label input-label'
       = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: 'Confirm Password'
+      = f.error :password_confirmation
     .text-center
       = f.submit 'Back to Store', class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center

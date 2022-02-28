@@ -1,0 +1,28 @@
+- presenter = BookPresenter.new(item.book)
+.general-cart-item.divider-lg-bottom
+  = link_to order_item_path(order_id: session[:order_id], id: item.id), method: :delete, class: 'close general-cart-close', 'aria-label': 'Close'  do
+    %span{'aria-hidden': "true"} &times;
+  .general-img-wrap-table
+    %img.cart-img-shadow{src: item.book.image_url, alt: "design-book"}
+  %p.title= item.book.name
+  %table.table
+    %tr
+      %td
+        %span.in-grey-600 Price
+      %td
+        %span.font-16.in-gold-500= currency_with_price item.book.price
+    %tr
+      %td.vertical-middle
+        %span.in-grey-600 Quantity
+      %td
+        .input-group
+          = link_to order_item_path(id: item.id, order_item: {quantity: item.quantity-1}), class: 'input-link', id: "order_#{item.id}_minus", method: :put, remote: true do
+            %i.fa.fa-minus.line-height-40
+          %input.form-control.quantity-input{type: 'text', value: item.quantity, readonly: true}
+          = link_to order_item_path(id: item.id, order_item: {quantity: item.quantity+1}), class: 'input-link', id: "order_#{item.id}_plus", method: :put, remote: true do
+            %i.fa.fa-plus.line-height-40
+    %tr
+      %td
+        %span.in-grey-600 SubTotal
+      %td
+        %span.font-16.in-gold-500= currency_with_price item.total_price

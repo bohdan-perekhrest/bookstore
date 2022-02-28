@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GenerateCatalog < ApplicationService
-
   def initialize(params)
     @params = params
   end
@@ -14,8 +13,7 @@ class GenerateCatalog < ApplicationService
 
   def generate_catalog
     pagy, books = BookService::GenerateBooks.new(@params).call
-    categories = CategoryService::GenerateCategories.new.call
+    categories = CategoriesQuery.new.call
     [pagy, books, categories]
   end
-
 end
