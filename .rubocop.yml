@@ -11,6 +11,7 @@ AllCops:
     - bin/**/*
     - config/**/*
     - spec/**/*
+    - vendor/bundle/**/*
 
 Metrics/LineLength:
   Max: 120
