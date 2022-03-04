@@ -34,15 +34,6 @@ en:
     logo: 'Bookstore'
     shop: 'Shop'
 
-  number:
-    currency:
-       format:
-         unit: '€'
-         delimiter: ','
-         separtor: '.'
-         precision: 2
-         format: '%u%n'
-
   page:
     home:
       carusel:
@@ -119,7 +110,6 @@ en:
     statuss: 'Status'
     total: 'Total'
     status:
-      in_progress: 'In Progress'
       in_queue: 'Waiting for processing'
       in_delivery: 'In delivery'
       delivered: 'Delivered'
@@ -178,8 +168,8 @@ en:
 
 
   validation:
-    cart_number: 'Please enter a valid credit card number'
-    cart_name: 'Allow only letters'
+    card_number: 'Please enter a valid credit card number'
+    card_name: 'Allow only letters'
     mm_yy: 'Mons can be from 01 to 12'
 
   mailer:

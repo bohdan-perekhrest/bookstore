@@ -31,5 +31,5 @@
             %span.checkbox-text= t('settings.use_billing')
     .general-text-align.mb-60
       %p.in-gold-500.font-18 Order Summary
-      = render partial: 'order_summary', locals: {order: current_order}
+      = render partial: 'order_summary', locals: {current_order: current_order}
       = f.submit t('checkout.save_and_continue'), class: 'btn btn-default center-block mb-20'

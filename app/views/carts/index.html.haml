@@ -24,5 +24,5 @@
         = render partial: 'coupon'
       .col-sm-8
         .res-mr-200.text-center.general-text-right
-          = render partial: 'order_summary', locals: {order: @order}
+          = render partial: 'order_summary', locals: {order: @current_order}
   = link_to t('cart.checkout'), checkout_index_path, class: 'btn btn-default mb-20'

@@ -22,8 +22,8 @@ module Updateable
     end
 
     def update_confirm
-      flash[:complete_order] = true
-      session[:order_id] = nil if current_order.finilize
+      session[:order_id] = nil if current_order.finalize
+      session[:complete_order] = true
     end
 
     def credit_card_params

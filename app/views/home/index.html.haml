@@ -1,11 +1,10 @@
-- books = Book.newest
 %main.container
   #carouselExampleControls.carousel.slide{'data-ride': "carousel"}
     %ol.carousel-indicators
-      - books.each.with_index(0) do |book, index|
+      - @latest_books.each.with_index(0) do |book, index|
         %li.active{'data-target': "#carouselExampleControls", 'data-slide-to': index}
     .carousel-inner{role: "listbox"}
-      - books.each.with_index(0) do |book, index|
+      - @latest_books.each.with_index(0) do |book, index|
         - presenter = BookPresenter.new(book)
         .item{class: index.zero? ? 'active' : ''}
           .row
@@ -34,7 +33,7 @@
     .mb-35
       %h3 Best Sellers
       .row
-        - Book.best_sellers.each do |book|
+        - @best_sellers.each do |book|
         - presenter = BookPresenter.new(book)
           .col-sm-6.col-md-3
             .general-thumb-wrap

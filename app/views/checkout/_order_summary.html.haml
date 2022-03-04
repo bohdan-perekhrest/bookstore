@@ -3,17 +3,17 @@
     %td
       %p.font-16 Item Total:
     %td
-      %p.font-16= currency_with_price @order.subtotal
+      %p.font-16= currency_with_price current_order.subtotal
   %tr
     %td
       %p.font-16 Coupon
     %td
-      - if @order.coupon.present?
-        %p.font-16= currency_with_price @order.coupon.value
+      - if current_order.coupon.present?
+        %p.font-16= currency_with_price current_order.coupon.value
       - else
         %p.font-16= currency_with_price
   %tr
     %td
       %p.font-16 Order Total:
     %td
-      %p.font-16= currency_with_price @order.total
+      %p.font-16= currency_with_price current_order.total

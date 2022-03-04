@@ -1,0 +1,55 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25 My Orders
+  %p.lead.small.mb-10.visible-xs Sort by
+  = render partial: 'dropdown'
+  .visible-xs
+    - @orders.each do |order|
+      - presenter = OrderPresenter.new(order)
+      .general-cart-item.divider-lg-bottom.pt-0
+        %table.table
+          %tr
+            %td.col-half
+              %span.in-grey-600 Number
+            %td.col-half
+              = link_to account_order_path(order.id) do
+                %span.general-order-number= presenter.number
+          %tr
+            %td
+              %span.in-grey-600 Completed at
+            %td
+              %span.ingrey-900.font-16.fw-300= presenter.creation_date
+          %tr
+            %td
+              %span.in-grey-600 Status
+            %td
+              %span.font-16.in-grey-900.fw-300= presenter.status
+          %tr
+            %td
+              %span.in-grey-600 Total
+            %td
+              %strong.font-16= currency_with_price order.total
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600 Number
+          %th
+            %span.in-grey-600 Completed at
+          %th
+            %span.in-grey-600 Status
+          %th
+            %span.in-grey-600 Total
+      %tbody
+      - @orders.each do |order|
+        - presenter = OrderPresenter.new(order)
+        %tr
+          %td
+            = link_to account_order_path(order.id) do
+              %span.general-order-number= presenter.number 
+          %td
+            %span.in-grey-900.font-16.fw-300= presenter.creation_date
+          %td
+            %span.font-16.in-grey-900.fw-300= presenter.status
+          %td
+            %strong.font-16= currency_with_price order.total

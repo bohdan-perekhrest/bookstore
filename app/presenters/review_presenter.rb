@@ -10,7 +10,11 @@ class ReviewPresenter < BasePresenter
   end
 
   def user_full_name
-    "#{review.user.billing.first_name} #{review.user.billing.last_name}"
+    if review.user.billing.present?
+      "#{review.user.billing.first_name} #{review.user.billing.last_name}"
+    else
+      review.user.email
+    end
   end
 
   def created_at_formated
@@ -21,7 +25,7 @@ class ReviewPresenter < BasePresenter
     MAX_STARS - review.star
   end
 
-  def verified_user
-    # TODO: when there is be orders add verified user
+  def verified?
+    review.user.orders.where.not(status: :in_progress).count.positive?
   end
 end

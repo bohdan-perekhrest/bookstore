@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ReviewsService < ApplicationService
-  attr_reader :params
+  attr_reader :params, :user_id
 
-  def initialize(params)
+  def initialize(params, user_id)
     @params = params
+    @user_id = user_id
   end
 
   def call
@@ -14,10 +15,9 @@ class ReviewsService < ApplicationService
   private
 
   def create_review
-    @review.new(review_params) do |review|
+    Review.new(review_params) do |review|
       review.user_id = user_id
       review.book_id = params[:book_id]
-      review.star = 5
     end.save
   end
 

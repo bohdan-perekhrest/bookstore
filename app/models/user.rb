@@ -15,17 +15,18 @@ class User < ApplicationRecord
   has_one :billing
   has_one :shipping
 
-  validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}\z/ }
+  validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}\z/ }, unless: :skip_password_validation
 
   scope :billing, -> { addresses.where(type: 'billing') }
 
-  # def self.new_with_session(params, session)
-  #   super.tag do |user|
-  #     if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
-  #       user.email = data['email'] if user.email.blank?
-  #     end
-  #   end
-  # end
+  def self.new_with_session(params, session)
+    super.tag do |user|
+      if (data = session['devise.facebook_data'] &&
+          session['devise.facebook_data']['extra']['raw_info']) && user.email.blank?
+        user.email = data['email']
+      end
+    end
+  end
 
   def order_in_progress
     orders.where(status: 'in_progress').first

@@ -10,9 +10,9 @@ module Users
       def update
         if params[:user][:update_email]
           @user.skip_password_validation = true
-          redirect_to_if(@user.update_without_password(email_params), 'email')
+          redirect_to_if(@user.update_without_password(email_params), 'Email')
         elsif params[:user][:update_password]
-          redirect_to_if(@user.update_with_password(password_params), 'password')
+          redirect_to_if(@user.update_with_password(password_params), 'Password')
         end
       end
 
@@ -21,9 +21,9 @@ module Users
       def redirect_to_if(condition, type)
         if condition
           bypass_sign_in @user, scope: :user
-          redirect_to privacy_path, notice: "#{type} was successfully updated!"
+          redirect_to privacy_path, notice: I18n.t('user.updated')
         else
-          redirect_to privacy_path, alert: "#{type} was not updated!"
+          redirect_to privacy_path, alert: "#{type} is invalid"
         end
       end
 

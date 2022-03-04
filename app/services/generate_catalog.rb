@@ -13,7 +13,11 @@ class GenerateCatalog < ApplicationService
 
   def generate_catalog
     pagy, books = BookService::GenerateBooks.new(@params).call
-    categories = CategoriesQuery.new.call
+    categories = generate_categories
     [pagy, books, categories]
+  end
+
+  def generate_categories
+    Category.with_books_count
   end
 end

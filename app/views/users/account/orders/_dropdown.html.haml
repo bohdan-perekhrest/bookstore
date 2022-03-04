@@ -1,0 +1,16 @@
+- presenter = DropdownsPresenter.new(params[:filter])
+.dropdowns.dropdown.general-order-dropdown
+  %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false", id: 'dropdownMenuButton2', 'data-bs-toggle': 'dropdown'}
+    = presenter.main_text_order
+    %i.fa.fa-angle-down.dropdown-icon.pull-right
+  %ul.dropdown-menu{'aria-labelledby': 'dropdownMenuButton2'}
+    %li
+      = link_to t('order.status.all'), account_order_index_path
+    %li
+      = link_to t('order.status.in_queue'), account_order_index_path(filter: 'in_queue')
+    %li
+      = link_to t('order.status.in_delivery'), account_order_index_path(filter: 'in_delivery')
+    %li
+      = link_to t('order.status.delivered'), account_order_index_path(filter: 'delivered')
+    %li
+      = link_to t('order.status.canceled'), account_order_index_path(filter: 'canceled')

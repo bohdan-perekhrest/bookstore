@@ -1,11 +1,8 @@
 = simple_form_for(:review, url: book_reviews_path(book_id: book_id)) do |f|
   %p.general-info-text Score
   .mb-15
-    %i.fa.fa-star.rate-empty
-    %i.fa.fa-star.rate-empty
-    %i.fa.fa-star.rate-empty
-    %i.fa.fa-star.rate-empty
-    %i.fa.fa-star.rate-empty
+    = f.select :star, (1..5), class: 'rating-loading', id: :review_score
+    .review_score
   .row
     .col-md-8
       .mb-40

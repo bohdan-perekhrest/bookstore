@@ -11,9 +11,10 @@ class Order < ApplicationRecord
   has_one :billing
   has_one :shipping
 
-  validates :status, presence: true, acceptance: { accept: %w[in_progress in_queue] }
+  enum status: { in_progress: 0, in_queue: 1, in_delivery: 2, delivered: 3, canceled: 4 }
 
-  scope :proccesing_order, -> { where(status: 'in_queue').order('updated_at').last }
+  validates :status, presence: true
+  scope :proccesing_order, -> { where(status: :in_queue).order('updated_at').last }
 
   before_validation :order_status, on: :create
   before_save :update_subtotal, :update_total, :connect_user
@@ -30,14 +31,14 @@ class Order < ApplicationRecord
     coupon.try(:value) || 0.00
   end
 
-  def finilize
-    set_order_status('in_queue')
+  def finalize
+    order_status(:in_queue)
     save!
   end
 
   private
 
-  def order_status(status = 'in_progress')
+  def order_status(status = :in_progress)
     self[:status] = status
   end
 

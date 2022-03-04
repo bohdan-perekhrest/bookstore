@@ -35,9 +35,10 @@ module Showable
     end
 
     def show_complete
-      return jump_to(:addresses) unless flash[:complete_order]
+      return jump_to(:addresses) unless session[:complete_order]
 
-      @order = current_user.orders.proccesing_order
+      @order = current_user.orders.proccesing_order.decorate
+      session[:complete_order] = nil
     end
 
     def show_address_params

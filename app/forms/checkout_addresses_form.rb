@@ -5,7 +5,7 @@ class CheckoutAddressesForm
 
   attr_reader :params, :target, :use_billing
 
-  def initialize(params: false)
+  def initialize(params)
     @params = params
     @target = Order.find_by(id: order_id) || User.find_by(id: user_id)
     @save = false
@@ -38,15 +38,15 @@ class CheckoutAddressesForm
   private
 
   def order_id
-    params.fetch(:order_id) || (params[:billing][:order_id] if nested?)
+    params.fetch(:order_id, false) || (params[:billing][:order_id] if nested?)
   end
 
   def user_id
-    params.fetch(:user_id) || (params[:billing][:user_id] if nested?)
+    params.fetch(:user_id, false) || (params[:billing][:user_id] if nested?)
   end
 
   def nested?
-    params.fetch(:billing)
+    params.fetch(:billing, false)
   end
 
   def save?
