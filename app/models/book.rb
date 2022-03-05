@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_many :order_items, dependent: :delete_all
   has_many :orders
 
-  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, :image presence: true
+  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, :image, presence: true
   validates :name, uniqueness: true
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :height, :width, :depth, numericality: { only_float: true }
