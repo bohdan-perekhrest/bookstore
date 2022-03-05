@@ -18,7 +18,7 @@ class Book < ApplicationRecord
   has_many :order_items, dependent: :delete_all
   has_many :orders
 
-  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, :image presence: true
+  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, :image, presence: true
   validates :price, numericality: { minimum: MIN_PRICE }
   validates :height, :width, :depth, numericality: { only_float: true }
   validates :published_at, numericality: { greater_than_or_equal_to: MIN_PUBLISHED_AT_YEAR, less_than_or_equal_to: Time.zone.now.year }
