@@ -14,7 +14,7 @@ module Users
       private
 
       def order
-        @order = Order.find_by(id: params[:id])
+        @order = Order.find_by(id: params[:id]).decorate
       end
     end
   end
