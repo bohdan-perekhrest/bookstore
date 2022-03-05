@@ -15,7 +15,7 @@ class Book < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :height, :width, :depth, numericality: { only_float: true }
   validates :published_at, numericality: { greater_than_or_equal_to: 1900, less_than_or_equal_to: Time.zone.now.year }
-  validates :small_images, length: { is: 3, message: 'Wrong input(should be 3 photos)' }
+  validates :small_images, length: { is: 3, allow_blank: true, message: 'Wrong input(should be 3 photos)' }
   validates :name, length: { maximum: 120 }
   validates :materials, length: { maximum: 80 }
   validates :description, length: { in: 5..2000 }
