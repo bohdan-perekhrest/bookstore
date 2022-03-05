@@ -1,15 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
-require 'devise'
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require 'simplecov'
-require 'capybara/rails'
 require 'rspec/rails'
+require 'simplecov'
+require 'devise'
 require 'support/database_cleaner'
-# Add additional requires below this line. Rails is not loaded until this point!
+require 'shoulda/matchers'
+require 'database_cleaner'
+require 'devise'
 
 SimpleCov.start 'rails'
 
@@ -54,7 +54,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
   # https://relishapp.com/rspec/rspec-rails/docs
   # Warden.test_mode!
   # config.after { Warden.test_reset! }
