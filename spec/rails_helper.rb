@@ -4,18 +4,14 @@ require File.expand_path("../../config/environment", __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'simplecov'
 require 'devise'
-require 'support/database_cleaner'
 require 'shoulda/matchers'
 require 'database_cleaner'
 require 'devise'
 
-SimpleCov.start 'rails'
 
 REQUIRED_DIRS = %w[
   support
-  features/shared_examples
   models/shared_examples
 ]
 
@@ -52,6 +48,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
