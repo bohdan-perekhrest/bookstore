@@ -7,7 +7,7 @@ executors:
     docker:
       - image: circleci/ruby:3.0.1
         environment:
-          RAILS_ENV: test
+          RAILS_ENV: development
 caches:
   - &bundle_cache_v1 v2_repo-{( checksum "Gemfile.lock" )}
   - &bundle_cache v2_repo-
