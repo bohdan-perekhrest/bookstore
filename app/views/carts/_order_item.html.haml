@@ -2,7 +2,7 @@
   %td
     .general-img-wrap-table
       = link_to book_path(item_presenter.book.id) do
-        %img.cart-img-shadow.pull-left{src: item_presenter.book.image_url, alt: "design-book"}
+        = image_tag(item_presenter.book.image class: 'cart-img-shadow pull-left', alt: item_presenter.book.name)
   %td
     = link_to book_path(item_presenter.book.id), class: 'text-as-link' do
       %p.title= item_presenter.book.name
