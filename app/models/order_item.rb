@@ -2,7 +2,7 @@
 
 class OrderItem < ApplicationRecord
   belongs_to :book
-  belongs_to :order, dependent: :destroy
+  belongs_to :order
 
   validates :total_price, :quantity, presence: true
   validates :quantity, numericality: { only_integer: true, minimum: 1 }

@@ -9,9 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
-  has_many :orders, dependent: :destroy
-  has_many :reviews, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  has_many :orders, dependent: :delete_all
+  has_many :reviews, dependent: :delete_all
+  has_many :addresses, dependent: :delete_all
   has_one :billing
   has_one :shipping
 
