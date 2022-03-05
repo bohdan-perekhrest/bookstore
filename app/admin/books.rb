@@ -25,7 +25,8 @@ ActiveAdmin.register Book do
       f.input :price
       f.input :description, as: :simplemde_editor
       f.input :category_id, as: :select, collection: Category.all, include_blank: false
-      f.input :authors, as: :select, input_html: { multiple: true }, collection: Author.all
+      f.input :authors, as: :select, input_html: { multiple: true },
+                        collection: Author.all.collect { |a| ["#{a.first_name} #{a.last_name}", a.id] }
       f.inputs 'Image' do
         f.input :image, as: :file
       end
