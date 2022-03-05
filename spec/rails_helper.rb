@@ -8,6 +8,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'simplecov'
 require 'capybara/rails'
 require 'rspec/rails'
+require 'support/database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 SimpleCov.start 'rails'
@@ -21,7 +22,6 @@ REQUIRED_DIRS = %w[
 REQUIRED_DIRS.each do |path|
   Dir[Rails.root.join("spec/#{path}/**/*.rb")].each { |f| require f }
 end
-
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -62,8 +62,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
-  # config.include Devise::Test::ControllerHelpers, type: :view
-  # config.include Warden::Test::Helpers
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include DeviseRequestSpecHelpers, type: :feature
   config.include FormHelpers, type: :feature
