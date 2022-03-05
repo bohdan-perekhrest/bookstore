@@ -43,7 +43,7 @@
           %td
             .general-img-wrap-table
               = link_to book_path(item.book) do
-                = image_tag item.book.image_url, alt: 'design-book', class: 'cart-img-shadow pull-left'
+                = image_tag item.book.image, alt: 'design-book', class: 'cart-img-shadow pull-left'
           %td
             = link_to book_path(item.book), class: 'text-as-link' do
               %p.title= item.book.name
