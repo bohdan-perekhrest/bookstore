@@ -179,6 +179,7 @@ en:
     card_number: 'Please enter a valid credit card number'
     card_name: 'Allow only letters'
     mm_yy: 'Mons can be from 01 to 12'
+    small_images: 'Wrong input(should be 3 photos)'
 
   mailer:
     new_passwd: 'Set new password'

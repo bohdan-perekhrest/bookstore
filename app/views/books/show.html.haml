@@ -7,6 +7,11 @@
       .product-gallery
         .mb-20
           = image_tag(@book.image, class: 'img-responsive', alt: @book.name)
+        - if @book.small_images.attached?
+          .images.clearfix
+            - @book.small_images.each do |image|
+              = link_to '#', class: 'img-link' do
+                = image_tag(image)
     .col-sm-6
       %h1.mt-res-0= @book.name
       %p.lead.small= @book_presenter.authors_full_names 

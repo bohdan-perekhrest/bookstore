@@ -2,8 +2,8 @@
 
 ActiveAdmin.register Book do
   includes :authors
-  permit_params :name, :price, :description, :image, :small_images, :category_id, :published_at, :height, :width, :depth, :materials,
-                author_ids: []
+  permit_params :name, :price, :description, :image, :category_id, :published_at, :height, :width, :depth, :materials,
+                author_ids: [], small_images: []
 
   index do
     column 'Image' do |book|
