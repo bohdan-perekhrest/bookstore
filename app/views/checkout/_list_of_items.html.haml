@@ -4,7 +4,7 @@
     .general-cart-item.divider-lg
       .general-img-wrap-table
         = link_to book_path(item.book) do
-          = image_tag item.book.image_url, alt: 'design-book', class: 'cart-img-shadow'
+          = image_tag item.book.image, alt: 'design-book', class: 'cart-img-shadow'
       %p.title= item.book.name
       %P.in-grey-600.fw-300= presenter.short_description
       %table.table
