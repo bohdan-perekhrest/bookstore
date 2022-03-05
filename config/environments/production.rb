@@ -12,6 +12,19 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'heroku.com',
+    user_name:            Rails.application.credentials.gmail.user_name,
+    password:             Rails.application.credentials.gmail.password,
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: 'sheltered-hollows-02513.heroku.com' }
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
