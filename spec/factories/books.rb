@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'ffaker'
+include ActionDispatch::TestProcess
 
 FactoryBot.define do
   factory :book do
@@ -22,6 +23,10 @@ FactoryBot.define do
     before(:create) do |book, evaluator|
       book.category_id= (Category.find_by_name(evaluator.category_name) ||
         FactoryBot.create(:category, name: evaluator.category_name)).id
+    end
+
+    before(:create) do |book|
+      book.image.attach(io: File.open('spec/support/assets/for_test.png'), filename: 'for_test.png', content_type: 'image/png') 
     end
 
     after(:create) do |book, evaluator|
