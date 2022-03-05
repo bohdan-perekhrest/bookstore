@@ -7,7 +7,7 @@ ruby '3.0.1'
 
 gem 'activeadmin', '~> 2.10'
 gem 'activeadmin_simplemde'
-gem 'aws-sdk-s3', '~> 1.112'
+gem 'aws-sdk-s3', '~> 1.112', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'country_select', '~> 6.1', '>= 6.1.1'

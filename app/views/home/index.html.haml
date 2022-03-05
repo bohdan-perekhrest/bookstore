@@ -10,7 +10,7 @@
           .row
             .col-sm-5
               .general-img-wrap
-                %img.img-shadow.general-thumbnail-img{src: book.image_url, alt: "design-book"}
+                = image_tag(book.image, class: 'img-shadow general-thumbnail-img', alt: book.name)
             .col-sm-7
               .mb-60
                 %h1= book.name 
@@ -38,7 +38,7 @@
           .col-sm-6.col-md-3
             .general-thumb-wrap
               .thumbnail.general-thumbnail
-                %img.img-shadow.general-thumbnail-img{src: book.image_url, alt: "design-book_service"}
+                = image_tag(book.image, class: 'img-shadow general-thumbnail-img', alt: book.name)
                 .thumb-hover
                   .general-thumb-link-wrap
                     = link_to book_path(id: book.id), class: 'thumb-hover-link' do

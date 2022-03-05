@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class Book < ApplicationRecord
-  include ImageUploader::Attachment(:image)
-
+  has_one_attached :image
+  has_many_attached :small_images
   belongs_to :category
-  has_many :authors_books, dependent: :destroy
+  has_many :authors_books, dependent: :delete_all
   has_many :authors, through: :authors_books
-  has_many :reviews, dependent: :destroy
-  has_many :order_items
+  has_many :reviews, dependent: :delete_all
+  has_many :order_items, dependent: :delete_all
   has_many :orders
 
-  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, presence: true
+  validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, :image presence: true
   validates :name, uniqueness: true
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :height, :width, :depth, numericality: { only_float: true }
