@@ -20,7 +20,7 @@ class User < ApplicationRecord
   scope :billing, -> { addresses.where(type: 'billing') }
 
   def self.new_with_session(params, session)
-    super.tag do |user|
+    super.tap do |user|
       if (data = session['devise.facebook_data'] &&
           session['devise.facebook_data']['extra']['raw_info']) && user.email.blank?
         user.email = data['email']
