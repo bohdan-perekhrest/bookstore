@@ -16,7 +16,7 @@ class OrderPresenter < BasePresenter
   end
 
   def status
-    ORDER_STATUSES[object.status.to_sym]
+    ORDER_STATUSES[order.status.to_sym]
   end
 
   def email
