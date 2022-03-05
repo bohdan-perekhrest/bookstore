@@ -36,7 +36,7 @@ commands:
       - run:
           name: run specs
           command: |
-            bundle exec rspec --format progress
+            bundle exec rspec --backtrace --format progress
 jobs:
   lintering:
     executor: default
