@@ -1,11 +1,15 @@
 version: 2.1
 
+orbs:
+  ruby: circleci/ruby@1.0
+  node: circleci/node@2
+
 executors:
   default:
     working_directory: ~/repo
     description: the offical
     docker:
-      - image: circleci/ruby:3.0.1
+      - image: circleci/ruby:3.0.1-node
         environment:
           RAILS_ENV: test 
 caches:
