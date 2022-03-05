@@ -3,16 +3,16 @@
     .col-xs-6.col-sm-3
       .general-thumb-wrap
         .thumbnail.general-thumbnail
-          %img.img-shadow.general-thumbnail-img{src: book_presenter.object.image_url, alt: "design-book_service"}
+          = image_tag(book_presenter.book.image, class: 'img-shadow general-thumbnail-img', alt: book_presenter.book.name)
           .thumb-hover
             .general-thumb-link-wrap
-              = link_to book_path(id: book_presenter.object.id), class: 'thumb-hover-link' do
+              = link_to book_path(id: book_presenter.book.id), class: 'thumb-hover-link' do
                 %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
-              = link_to order_items_path(order_item: {book_id: book_presenter.object.id, quantity: 1}), method: :post,  class: 'thumb-hover-link' do
+              = link_to order_items_path(order_item: {book_id: book_presenter.book.id, quantity: 1}), method: :post,  class: 'thumb-hover-link' do
                 %i.fa.fa-shopping-cart.thumb-icon
       .general-thumb-info
-        %p.title= book_presenter.object.name
-        %p.font-16.in-gold-500= currency_with_price book_presenter.object.price 
+        %p.title= book_presenter.book.name
+        %p.font-16.in-gold-500= currency_with_price book_presenter.book.price 
         %span.divider-sm
         %p.lead.small= book_presenter.authors_full_names 
   .row.mb-25
