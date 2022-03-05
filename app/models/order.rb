@@ -46,14 +46,18 @@ class Order < ApplicationRecord
   end
 
   def total
-    subtotal - discount
+    subtotal - discount + delivery_price
   end
 
   def discount
     coupon.try(:value) || 0.00
   end
 
-  def finilize
+  def delivery_price
+    delivery.try(:price) || 0.00
+  end
+
+  def finalize
     in_queue!
     save!
   end
