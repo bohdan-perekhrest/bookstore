@@ -8,8 +8,6 @@ module Showable
 
     def show_login
       return jump_to(next_step) if user_signed_in?
-
-      cookies[:from_checkout] = { value: true, expires: 1.day.from_now }
     end
 
     def show_addresses
