@@ -8,11 +8,25 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
+ * It is generally better to create a sssnew file per style scope.
  *
- *= require_tree .
+ *= require_directory .
  *= require_self
  */
 
 @import "bootstrap-sprockets";
+@import "custom/variables";
 @import "bootstrap";
+@import "custom/theme";
+@import "bookstore/general";
+@import "bookstore/utils/helpers";
+
+a.text-as-link {
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+}
+
+.filter-link.active{ /* because in catalog page, 'active' classoverridden by someone  */
+  color: black;
+  text-shadow: 0 0 1px rgba(0,0,0,0.2);
+} 
