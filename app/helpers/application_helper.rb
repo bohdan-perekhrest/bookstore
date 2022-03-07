@@ -30,6 +30,18 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
   end
 
+  def currency_with_price(price = 0.00)
+    "€#{price}"
+  end
+
+  def full_name(object)
+    "#{object.first_name} #{object.last_name}"
+  end
+
+  def city_zip(object)
+    "#{object.city} #{object.zip}"
+  end
+
   def bootstrap_class_for(flash_type)
     {
       success: 'alert-success',
