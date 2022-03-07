@@ -7,15 +7,6 @@ module CurrentSession
   included do
     around_action :set_current_user
     helper_method :current_order
-
-    def after_sign_in_path_for(resource)
-      if cookies[:from_checkout]
-        cookies.delete :from_checkout
-        checkout_path(:addresses)
-      else
-        super
-      end
-    end
   end
 
   def current_order
