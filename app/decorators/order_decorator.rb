@@ -17,8 +17,4 @@ class OrderDecorator < Draper::Decorator
     data = object.updated_at
     I18n.t('date.month_names')[data.month] + " #{data.strftime('%d, %Y')}"
   end
-
-  def secret_card_number
-    "**** **** **** #{object.credit_card.number.last(4)}"
-  end
 end

@@ -2,7 +2,6 @@
 
 class BookPresenter < BasePresenter
   include ApplicationHelper
-  include FullNameHelper
 
   attr_reader :book
 
