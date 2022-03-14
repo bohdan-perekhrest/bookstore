@@ -10,6 +10,7 @@ gem 'activeadmin_simplemde'
 gem 'aws-sdk-s3', '~> 1.112', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'cancancan', '~> 3.3'
 gem 'country_select', '~> 6.1', '>= 6.1.1'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'draper', '~> 4.0', '>= 4.0.2'

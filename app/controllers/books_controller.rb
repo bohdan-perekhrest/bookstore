@@ -2,11 +2,12 @@
 
 class BooksController < ApplicationController
   include Pagy::Backend
+  load_and_authorize_resource
   before_action :set_book, only: %i[show]
   respond_to :html, :js, only: %i[index]
 
   def index
-    @pagy, @books, @categories = GenerateCatalog.new(params).call
+    @pagy, @books, @categories = CatalogGenerator.new(params).call
   end
 
   def show; end

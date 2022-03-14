@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GenerateCatalog < ApplicationService
+class CatalogGenerator< ApplicationService
   def initialize(params)
     @params = params
   end

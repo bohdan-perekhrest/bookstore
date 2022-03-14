@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Review < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :book, dependent: :destroy
+  belongs_to :user
+  belongs_to :book
 
   enum status: { unproccessed: 0, approved: 1, rejected: 2 }
 

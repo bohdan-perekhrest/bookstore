@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_135032) do
+ActiveRecord::Schema.define(version: 2022_03_14_155810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,12 +107,12 @@ ActiveRecord::Schema.define(version: 2022_03_05_135032) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "category_id"
     t.float "height"
     t.float "width"
     t.float "depth"
     t.string "materials"
     t.integer "published_at"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
@@ -145,12 +145,12 @@ ActiveRecord::Schema.define(version: 2022_03_05_135032) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.bigint "book_id"
-    t.bigint "order_id"
     t.integer "quantity"
     t.decimal "total_price", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "book_id"
+    t.bigint "order_id"
     t.index ["book_id"], name: "index_order_items_on_book_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -161,10 +161,10 @@ ActiveRecord::Schema.define(version: 2022_03_05_135032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "coupon_id"
-    t.bigint "user_id"
     t.bigint "delivery_id"
     t.bigint "credit_card_id"
     t.integer "status", default: 0
+    t.bigint "user_id"
     t.index ["coupon_id"], name: "index_orders_on_coupon_id"
     t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
     t.index ["delivery_id"], name: "index_orders_on_delivery_id"
@@ -176,10 +176,10 @@ ActiveRecord::Schema.define(version: 2022_03_05_135032) do
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
     t.integer "star"
-    t.bigint "book_id"
     t.integer "status", default: 0
+    t.bigint "user_id"
+    t.bigint "book_id"
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -200,15 +200,15 @@ ActiveRecord::Schema.define(version: 2022_03_05_135032) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "orders"
-  add_foreign_key "addresses", "users"
-  add_foreign_key "books", "categories"
-  add_foreign_key "order_items", "books"
-  add_foreign_key "order_items", "orders"
+  add_foreign_key "addresses", "orders", on_delete: :cascade
+  add_foreign_key "addresses", "users", on_delete: :cascade
+  add_foreign_key "books", "categories", on_delete: :cascade
+  add_foreign_key "order_items", "books", on_delete: :cascade
+  add_foreign_key "order_items", "orders", on_delete: :cascade
   add_foreign_key "orders", "coupons"
   add_foreign_key "orders", "credit_cards"
   add_foreign_key "orders", "deliveries"
-  add_foreign_key "orders", "users"
-  add_foreign_key "reviews", "books"
-  add_foreign_key "reviews", "users"
+  add_foreign_key "orders", "users", on_delete: :cascade
+  add_foreign_key "reviews", "books", on_delete: :cascade
+  add_foreign_key "reviews", "users", on_delete: :cascade
 end

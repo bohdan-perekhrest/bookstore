@@ -29,13 +29,13 @@
                 %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
             = f.hidden_field :book_id, value: @book.id
-            = f.submit 'Add to Cart', class: 'btn btn-default pull-right general-position' # add disabled: !@book.active
+            = f.submit 'Add to Cart', class: 'btn btn-default pull-right general-position'
       .general-info-wrap.divider-lg
         %p= t('page.book.show.description')
         %p.lead.small.line-height-2
           = presenter.truncate_description
           #collapse{style: 'display: none;'}= @book.description
-          = link_to 'Read More', '#collapse', class: 'nav-toggle'
+          = link_to t('button.read_more'), '#collapse', class: 'nav-toggle'
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('page.book.show.published_at')

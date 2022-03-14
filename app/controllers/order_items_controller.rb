@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class OrderItemsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_order_item, only: %i[update destroy]
 
   def create

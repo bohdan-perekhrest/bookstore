@@ -2,5 +2,5 @@
 
 class AuthorsBook < ApplicationRecord
   belongs_to :author
-  belongs_to :book, dependent: :destroy
+  belongs_to :book
 end
