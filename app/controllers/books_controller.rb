@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
+  load_and_authorize_resource
   include Pagy::Backend
   before_action :set_book, only: %i[show]
 
   def index
-    @pagy, @books, @categories = GenerateCatalog.new(params).call
+    @pagy, @books, @categories = CatalogGenerator.new(params).call
   end
 
   def show; end
@@ -18,7 +19,7 @@ class BooksController < ApplicationController
     if Book.create(book_params)
       redirect_to root_path, notice: 'book was successfully create'
     else
-      render :sssnew, alert: 'book was not create'
+      render :new, alert: 'book was not create'
     end
   end
 

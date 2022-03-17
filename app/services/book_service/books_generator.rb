@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module BookService
-  class GenerateBooks < ApplicationService
-
+  class BooksGenerator < ApplicationService
     attr_reader :params
 
     def initialize(params)
@@ -13,7 +12,6 @@ module BookService
     def call
       generate_books
     end
-    
 
     private
 
