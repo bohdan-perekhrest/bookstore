@@ -2,18 +2,29 @@
 
 module BookService
   class BooksGenerator < ApplicationService
-    attr_reader :params
-
-    def initialize(params)
+    def initialize(params, books:, categories:)
       @params = params
-      @books = Book.all
+      @books = books
+      @categories = categories
     end
 
     def call
-      generate_books
+      generate_catalog
     end
 
     private
+
+    attr_reader :params
+
+    def generate_catalog
+      pagy, books = generate_books
+      categories = generate_categories
+      [pagy, books, categories]
+    end
+
+    def generate_categories
+      @categories.joins(:books).select('categories.*, count(books.id) as books_count').group('categories.id')
+    end
 
     def generate_books
       by_category if category_id

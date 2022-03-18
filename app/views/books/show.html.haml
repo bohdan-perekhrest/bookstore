@@ -1,7 +1,7 @@
 %main.container
   = link_to :back, class: 'general-back-link' do
     %i.fa.fa-long-arrow-left.mr-15
-    Back to results
+    = t('button.back_to_results')
   .row
     .col-sm-6
       .product-gallery
@@ -20,7 +20,7 @@
           %button.btn.btn-default.pull-right.general-position Add to Cart
       - if @book.description
         .general-info-wrap.divider-lg
-          %p Description
+          %p= t('page.book.show.description')
           %p.lead.small.line-height-2
             = truncate(@book.description, length: 200)
             = link_to t('button.read_more'), '#', class: 'in-gold-500 ml-10'
@@ -32,12 +32,12 @@
       - if @book.height && @book.width && @book.depth
         .general-info-wrap.divider-lg
           .clearfix
-            %p.pull-left Dimensions
+            %p.pull-left= t('page.book.show.dimensions')
             %p.lead.small.pull-right= "H:#{@book.height}' x W:#{@book.width}' x D:#{@book.depth}'"
       - if @book.materials
         .general-info-wrap.divider-lg
           .clearfix
-            %p.pull-left Materials
+            %p.pull-left= t('page.book.show.materials')
             %p.lead.small.pull-right= @book.materials
   .mb-80
     %h3 Write a Review

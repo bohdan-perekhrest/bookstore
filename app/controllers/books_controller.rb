@@ -2,17 +2,11 @@
 
 class BooksController < ApplicationController
   load_and_authorize_resource
+  load_and_authorize_resource :category
   include Pagy::Backend
-  before_action :set_book, only: %i[show]
 
   def index
-    @pagy, @books, @categories = CatalogGenerator.new(params).call
-  end
-
-  def show; end
-
-  def new
-    @book = Book.new
+    @pagy, @books, @categories = Books::BooksGenerator.new(params, books: @books, categories: @categories).call
   end
 
   def create
@@ -24,10 +18,6 @@ class BooksController < ApplicationController
   end
 
   private
-
-  def set_book
-    @book = Book.find_by(id: params[:id])
-  end
 
   def book_params
     params.require(:book).permit(
