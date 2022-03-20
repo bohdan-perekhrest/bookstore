@@ -1,26 +1,26 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title Log In
-    %a.general-login-icon{href: "#"}
-      %i.fa.fa-facebook-official
-    %p.general-login-text or
+    %h3.general-login-title= t('button.log_in')
+    %a.general-login-icon
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
+        %i.fa.fa-facebook-official
+    %p.general-login-text= t('button.or')
   = simple_form_for(:user, url: user_session_path, html: { class: 'general-form' }) do |f|
     .form-group.mb-30
-      = f.label :email, class: 'control-label input-label', required: true, autofocus: true, error_html: { class: 'custom-error-class' }
-      = f.email_field :email, placeholder: 'Enter Email', class: 'form-control', id:'email'
+      = f.label :email, class: 'control-label input-label', required: true, autofocus: true
+      = f.email_field :email, placeholder: t('page.settings.enter_e-mail'), class: 'form-control', id:'email'
     .form-group.mb-30
       = f.label :password, class: 'control-label input-label'
-      = f.password_field :password, class: 'form-control', id: 'password', placeholder: 'Input password', error_html: { class: 'custom-error-class' }
-      = link_to 'Forgot password?', new_user_password_path, class: 'in-gold-500'
+      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('page.settings.enter-passwd')
+      = link_to t('button.forgot_password'), new_user_password_path, class: 'in-gold-500'
     .form-group.checkbox.text-center.mb-30
       %label.checkbox-label
         = f.check_box :remember_me, class: 'checkbox-input', hidden: 'true'
         %span.checkbox-icon
           %i.fa.fa-check
-        %span.checkbox-text Remember me
+        %span.checkbox-text= t('page.settings.remember_me')
     .text-center
-      = f.submit 'Back to Store', class: 'btn btn-default mb-20'
+      = f.submit t('button.back_to_store'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
-    Don’t have an Account?
-    = link_to 'Sign Up', new_user_registration_path, class: 'in-gold-500'
-  %script{src: "https://use.fontawesome.com/67602d7308.js"}
+    = t('button.dont_have_account')
+    = link_to t('button.sign_up'), new_user_registration_path, class: 'in-gold-500'
