@@ -1,0 +1,14 @@
+.dropdowns.pull-right
+  .dropdown.width-240
+    %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false", 'id': "dropdownMenuButton1", 'data-bs-toggle': "dropdown"}
+      = params[:filter] ? params[:filter] : 'Newest first'
+      %i.fa.fa-angle-down.dropdown-icon.pull-right
+    %ul.dropdown-menu{'aria-labelledby': "dropdownMenuButton1"}
+      %li
+        = link_to 'Newest first', books_path(filter: 'newest', category_id: params[:category_id])
+      %li
+        = link_to 'Popular first', books_path(filter: 'popular', category_id: params[:category_id])
+      %li
+        = link_to 'Price Low to High', books_path(filter: 'price_up', category_id: params[:category_id])
+      %li
+        = link_to 'Price High to Low', books_path(filter: 'price_down', category_id: params[:category_id])

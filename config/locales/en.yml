@@ -12,6 +12,7 @@ en:
     back_to_orders: 'Back to Orders'
     forgot_password: 'Forgot password?'
     resend_passwd_instruction: 'Email Instructions'
+    resend_confirm_instruction: 'Resend confirmation instructions'
     type_new_passwd: 'Type a new Password'
     confirm_passwd: 'Confirm Password'
     change: 'Change'
@@ -172,6 +173,8 @@ en:
     mm_yy: 'Mons can be from 01 to 12'
 
   mailer:
+    pass_changed: "We're contacting you to notify you that your password has been changed."
+    pass_change: 'Someone has requested a link to change your password. You can do this through the link below.'
     email: 'Your email:'
     password: 'Your password:'
     thanks: 'Thank you!'
