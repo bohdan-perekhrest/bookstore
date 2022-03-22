@@ -1,5 +1,5 @@
 class AddReferenceToAddress < ActiveRecord::Migration[6.1]
   def change
-    add_reference :addresses, :order, foreign_key: true, index: true
+    add_reference :addresses, :order, foreign_key: { on_delete: :cascade }, index: true
   end
 end
