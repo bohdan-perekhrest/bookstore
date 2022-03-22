@@ -10,6 +10,6 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :image_data
       t.timestamps
     end
-    add_reference :books, :category, index: true, foreign_key: true
+    add_reference :books, :category, foreign_key: { on_delete: :cascade}, index: true
   end
 end
