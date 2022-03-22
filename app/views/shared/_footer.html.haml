@@ -7,10 +7,11 @@
             %a.nav-link{href: "#"}= t('button.home')
           %li
             %a.nav-link{href: "#"}= t('button.shop')
-          %li
-            %a.nav-link{href: "#"}= t('button.orders')
-          %li
-            %a.nav-link{href: "#"}= t('button.settings')
+          - if user_signed_in?
+            %li
+              %a.nav-link{href: "#"}= t('button.orders')
+            %li
+              %a.nav-link{href: "#"}= t('button.settings')
       .col-sm-3
         %p.general-nav-mail support@bookstore.com
         %p.general-nav-number (555)-555-5555
