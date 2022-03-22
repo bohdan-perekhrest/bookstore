@@ -3,9 +3,6 @@
 module Users
   module Settings
     class AddressUpdater < ApplicationService
-      attr_reader :params, :user_id
-
-      VARIABLES = %i[first_name last_name city zip country address phone].freeze
 
       def initialize(params, user_id)
         @params = params
@@ -20,14 +17,18 @@ module Users
 
       private
 
+      attr_reader :params, :user_id
+
       def address
         @address = Address.where(type: params[:type], user_id: user_id).first_or_initialize
       end
 
+      def address_params
+        params.permit(:first_name, :last_name, :city, :zip, :country, :address, :phone)
+      end
+
       def fill_in_address
-        VARIABLES.each do |var|
-          @address.send("#{var}=", params[var]) if params[var]
-        end
+        @address.assign_attributes(address_params)
       end
 
       def save_address
