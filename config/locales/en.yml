@@ -1,5 +1,6 @@
 en:
   button:
+    or: 'or'
     home: 'Home'
     shop: 'Shop'
     orders: 'Orders'
@@ -8,6 +9,7 @@ en:
     log_in: 'Log in'
     my_account: 'My account'
     sign_up: 'Sign up'
+    cancel: 'Cancel'
     back_to_store: 'Back to Store'
     back_to_orders: 'Back to Orders'
     forgot_password: 'Forgot password?'
@@ -30,6 +32,8 @@ en:
     title_Z-A: 'Title Z - A'
     get_started: 'Get Started'
     post: 'Post'
+    already_have_account: 'You already have account?'
+    dont_have_account: 'Don’t have an Account?'
 
   header:
     logo: 'Bookstore'
@@ -86,7 +90,9 @@ en:
     save: 'Save'
     e-mail: 'Email'
     enter_e-mail: 'Enter Email'
+    enter-passwd: 'Enter Password'
     enter_your_e-mail: 'Enter your email'
+    remember_me: 'Remember Me'
     password: 'Password'
     old_password: 'Old Password'
     new_password: 'New Password'
@@ -173,8 +179,10 @@ en:
     mm_yy: 'Mons can be from 01 to 12'
 
   mailer:
+    new_passwd: 'Set new password'
     pass_changed: "We're contacting you to notify you that your password has been changed."
     pass_change: 'Someone has requested a link to change your password. You can do this through the link below.'
+    we_email_instration: 'We'll email you instructions on how to reset it'
     email: 'Your email:'
     password: 'Your password:'
     thanks: 'Thank you!'

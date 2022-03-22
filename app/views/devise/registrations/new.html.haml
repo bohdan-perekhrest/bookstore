@@ -1,22 +1,22 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title Sign Up
-    %a.general-login-icon{href: "#"}
+    %h3.general-login-title= t('button.sign_up')
+    = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
       %i.fa.fa-facebook-official
-    %p.general-login-text or
-  %form.general-form
+    %p.general-login-text= t('button.or')
+  = simple_form_for(:user, url: user_registration_path,  html: { class: 'general-form'}) do |f|
     .form-group.mb-30
-      %label.control-label.input-label{for: "email"} Enter Email
-      %input#email.form-control{name:"email", type: "email", placeholder: "Enter Email"}
+      = f.label :email, class: 'control-label input-label', require: 'true'
+      = f.email_field :email, placeholder: t('page.settings.enter_e-mail'), class: 'form-control', id:'email'
     .form-group.mb-30
-      %label.control-label.input-label{for: "password"} Password
-      %input#password.form-control{name:"password", type: "password", placeholder: "Password"}
+      = f.label :password, class: 'control-label input-label'
+      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('page.settings.enter-passwd')
     .form-group.mb-30
-      %label.control-label.input-label{for: "confirm"} Confirm Password
-      %input#confirm.form-control{name:"confirm", type: "password", placeholder: "Confirm Password"}
+      = f.label :password_confirmation, class: 'control-label input-label'
+      = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: t('page.settings.confirm_password')
     .text-center
-      %button.btn.btn-default.mb-20 Back to Store
+      = f.submit t('button.back_to_store'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center
-    You already have account?
-    %a.in-gold-500{href: "#"} Log In
+    = t('button.already_have_account')
+    = link_to t('button.log_in'), new_user_session_path, class: 'in-gold-500'
   %script{src: "https://use.fontawesome.com/67602d7308.js"}

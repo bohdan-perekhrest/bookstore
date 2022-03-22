@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  .text-center
+    %h1.mb-30= t('button.forgot_password')
+    %p.general-password-text= t('mailer.we_email_instration')
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'general-form' }) do |f|
+    .form-group.mb-25
+      = f.email_field :email, id: 'email', placeholder: 'Enter your email', class: 'form-control', autofocus: true, autocomplete: 'email'
+    = f.submit t('button.resend_passwd_instruction'), class: 'btn btn-default center-block mb-20'
+    .text-center
+      = link_to t('button.cancel'), new_user_session_path, class: 'in-gold-500 mb-20'
+%script{src: "https://use.fontawesome.com/67602d7308.js"}
