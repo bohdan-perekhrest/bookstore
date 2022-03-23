@@ -28,6 +28,7 @@ group :development, :test do
   gem 'fasterer', '~> 0.9.0'
   gem 'rubocop-rails', '~> 2.13', '>= 2.13.2'
   gem 'simplecov', '~> 0.21.2'
+  gem 'shoulda-matchers', '~> 5.1'
 end
 
 group :development do
