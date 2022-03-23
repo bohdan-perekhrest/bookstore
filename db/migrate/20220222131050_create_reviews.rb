@@ -3,8 +3,11 @@ class CreateReviews < ActiveRecord::Migration[6.1]
     create_table :reviews do |t|
       t.string :title
       t.text :text
+      t.integer :star
+      t.string :status
       t.timestamps
     end
-    add_reference :reviews, :user, index: true, foreign_key: true
+    add_reference :reviews, :user, index: true, foreign_key: { on_delete: :cascade }
+    add_reference :reviews, :book, index: true, foreign_key: { on_delete: :cascade }
   end
 end

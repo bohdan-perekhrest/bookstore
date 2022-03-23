@@ -33,6 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       t.timestamps null: false
+
+      t.string :provider
+      t.string :uid
     end
 
     add_index :users, :email,                unique: true
