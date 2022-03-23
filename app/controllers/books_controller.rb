@@ -2,6 +2,7 @@
 
 class BooksController < ApplicationController
   load_and_authorize_resource
+  load_and_authorize_resource :categories
   respond_to :html, :js, only: %i[index]
   include Pagy::Backend
 

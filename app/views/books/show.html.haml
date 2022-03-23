@@ -24,12 +24,12 @@
                 %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
             = f.hidden_field :book_id, value: @book.id
-            = f.submit 'Add to Cart', class: 'btn btn-default pull-right general-position'
+            = f.submit t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'
       .general-info-wrap.divider-lg
         %p= t('page.book.show.description')
         %p.lead.small.line-height-2
           = presenter.truncate_description
-          = link_to 'Read More', '#collapseExample', role: 'button', 'aria-expanded': false, 'aria-controls':'collapseExample'
+          = link_to t('button.read_more'), '#collapseExample', role: 'button', 'aria-expanded': false, 'aria-controls':'collapseExample'
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('page.book.show.published_at')

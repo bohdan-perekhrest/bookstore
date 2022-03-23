@@ -182,11 +182,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-<<<<<<< HEAD
   config.email_regexp = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-=======
-  config.email_regexp = %r{\A[^-.]\w+[-.]?(\w+[-!#$%&'*+/=?^_`{|}~.]\w+)*[^-]@([\w\d]+)\.([\w\d]+)\z}
->>>>>>> 612c018 (migration)
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this

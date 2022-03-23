@@ -4,7 +4,6 @@
   .form-group
     = f.label :first_name, class: 'control-label input-label'
     = f.text_field :first_name, value: presenter.first_name, class: 'form-control', id: 'firstName', placeholder: 'First Name', required: true
-    %span.help-block Please enter your first name
   .form-group
     = f.label :last_name, class: 'control-label input-label'
     = f.text_field :last_name, value: presenter.last_name, class: 'form-control', id: 'lastName', placeholder: 'Last Name', required: true

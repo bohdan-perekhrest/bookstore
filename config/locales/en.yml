@@ -33,7 +33,7 @@ en:
     get_started: 'Get Started'
     post: 'Post'
     already_have_account: 'You already have account?'
-    dont_have_account: 'Don’t have an Account?'
+    dont_have_account: "Don’t have an Account?"
 
   header:
     logo: 'Bookstore'
@@ -167,6 +167,7 @@ en:
     wrong_password: 'Please enter correct password'
 
   checkout:
+    phone: 'Phone'
     save_and_continue: 'Save and Continue'
     place_order: 'Place Order'
     cart_number: 'Card Number'

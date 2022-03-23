@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_one :billing, dependent: :delete_all
   has_one :shipping, dependent: :delete_all
 
-  validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}\z/ }
+  validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}\z/ }, unless :skip_password_validation
 
   scope :billing, -> { addresses.where(type: 'billing') }
 
@@ -26,7 +26,7 @@ class User < ApplicationRecord
       end
     end
   end
-
+  
   def order_in_progress
     orders.where(status: 'in_progress').first
   end

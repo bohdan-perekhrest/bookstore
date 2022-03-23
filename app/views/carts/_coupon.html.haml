@@ -1,6 +1,6 @@
 .input-group.general-input-group
   = form_tag order_path(id: session[:order_id]), method: :put
-  = label_tag :code, 'Enter Your Coupon Code', class: 'input-label'
-  = text_field_tag :code, nil, placeholder: 'Enter Your Coupon Code', class: 'form-control mb-30'
+  = label_tag :code, t('cart.coupon'), class: 'input-label'
+  = text_field_tag :code, nil, placeholder: t('cart.coupon'), class: 'form-control mb-30'
   %div
     = submit_tag t('cart.apply_coupon'), class: 'btn btn-primary mr-5 mb-15'

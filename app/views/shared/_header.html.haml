@@ -7,13 +7,8 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-<<<<<<< HEAD
-      %a.navbar-brand= t('header.logo')
-      %a.shop-link.pull-right.visible-xs{href: "#"}
-=======
-      = link_to 'Bookstore', root_path, class: 'navbar-brand'
+      = link_to t('header.logo'), root_path, class: 'navbar-brand'
       = link_to order_index_path, class: 'shop-link pull-right visible-xs' do
->>>>>>> 612c018 (migration)
         %span.shop-icon
           %span.shop-quantity= presenter.order_items_count
     = link_to order_index_path, class: 'shop-link pull-right hidden-xs' do
@@ -25,41 +20,25 @@
           %span{'aria-hidden': "true"} &times;
         %ul.nav.navbar-nav
           %li
-<<<<<<< HEAD
-            %a{href: "#"}= t('button.home')
+            = link_to t('button.home'), root_path
           %li
-            %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"}= t('button.shop')
-          %li
-            %a{href: "#"}= t('button.my_account')
-      .hidden-xs
-        %ul.nav.navbar-nav
-          %li
-            %a{href: "#"}= t('button.home')
-          %li.dropdown
-            %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}= t('button.shop')
-          %li
-            %a{href: "#"}= t('button.my_account')
-=======
-            = link_to 'Home', root_path
-          %li
-            = link_to 'Shop', books_path
+            = link_to t('button.shop'), books_path
           %li
             - if current_user
-              = link_to 'My account', address_path
+              = link_to t('button.my_account'), address_path
             - else
-              = link_to 'Log In', new_user_session_path
+              = link_to t('button.log_in'), new_user_session_path
       .hidden-xs
         %ul.nav.navbar-nav
           %li
-            = link_to 'Home', root_path
+            = link_to t('button.home'), root_path
           %li.dropdown
-            = link_to 'Shop', books_path
+            = link_to t('button.shop'), books_path
           - if current_user
             %li
-              = link_to 'My account', address_path
+              = link_to t('button.my_account'), address_path
             %li
-              = link_to 'Log Out', destroy_user_session_path, method: :delete
+              = link_to t('button.log_out'), destroy_user_session_path, method: :delete
           - else
             %li
-              = link_to 'Log In', new_user_session_path
->>>>>>> 612c018 (migration)
+              = link_to t('button.log_in'), new_user_session_path

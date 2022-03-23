@@ -10,11 +10,8 @@ gem 'activeadmin_simplemde'
 gem 'aws-sdk-s3', '~> 1.112'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
-<<<<<<< HEAD
 gem 'cancancan', '~> 3.3'
-=======
 gem 'country_select', '~> 6.1', '>= 6.1.1'
->>>>>>> 612c018 (migration)
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'

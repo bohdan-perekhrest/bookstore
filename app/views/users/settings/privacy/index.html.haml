@@ -3,7 +3,7 @@
   .tab-pane
     .row.mb-60
       .col-sm-5
-        %p.in-gold-500.font-18.mb-25 Email
+        %p.in-gold-500.font-18.mb-25= t('settings.e-mail')
         = simple_form_for(:user, url: privacy_path, method: :patch, html: {class: 'general-form-md'}) do |f|
           = f.hidden_field :update_email, value: true
           .form-group.mb-35
@@ -12,7 +12,7 @@
           .general-text-align
             = f.submit 'Save', class: 'btn btn-default mb-35'
       .col-sm-5.col-sm-offset-1
-        %p.in-gold-500.font-18.mb-25 Password
+        %p.in-gold-500.font-18.mb-25= t('settings.password')
         = simple_form_for(:user, url: privacy_path, method: :patch, html: {class: 'general-form-md divider-lg-bottom pb-25'}) do |f|
           = f.hidden_field :update_password, value: true
           .form-group.mb-30
@@ -27,14 +27,14 @@
           .general-text-align
             = f.submit 'Save', class: 'btn btn-default mb-10'
       .col-sm-12
-        %p.in-gold-500.font-18.mb-25 Remove Account
+        %p.in-gold-500.font-18.mb-25= t('settings.remove_account')
         = form_with(url: registration_path(resource_name), method: :delete) do |f|
           .general-settings-btn
-            = f.submit 'Please Remove My Account', class: 'btn btn-default mb-20'
+            = f.submit t('settings.please_remove_account'), class: 'btn btn-default mb-20'
           .form-group.checkbox.general-settings-checkbox
             %label.checkbox-label
               = f.check_box :remove, hidden: 'true'
               %span.checkbox-icon
                 %i.fa.fa-check
-              %span.checkbox-text I understand that all data will be lost
+              %span.checkbox-text= t('settings.im_agree_lost_all_data')
   %script{src: "https://use.fontawesome.com/67602d7308.js"}
