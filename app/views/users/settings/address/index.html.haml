@@ -1,0 +1,18 @@
+%main.container
+  = render partial: 'users/settings/tab'
+  .tab-content
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle.mt-0 Billing Address
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle.mt-0 Shipping Address
+      .row
+        .col-md-5.mb-40
+          .visible-xs.visible-sm
+            %h3.general-subtitle.mt-0 Billing Address
+          = render partial: 'form', locals: {type: 'Billing'}
+        .col-md-5.col-md-offset-1.mb-25
+          .visible-xs.visible-sm
+            %h3.general-subtitle.mt-0 Shipping Address
+          = render partial: 'form', locals: {type: 'Shipping'}

@@ -1,0 +1,37 @@
+%main.container
+  .row
+    .col-md-5.mb-40
+      .text-center
+        %h3.general-subtitle= t('checkout.returning_customer')
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
+          %i.fa.fa-facebook-official
+        %p.general-login-text= t('button.or')
+      = simple_form_for(:user, url: user_session_path, html: { class: 'general-form' }) do |f|
+        .mb-40
+          %p.mb-15= t('checkout.login_with_password')
+          .form-group.mb-30
+            = f.label :email, class: 'control-label input-label', required: true, autofocus: true, error_html: { class: 'custom-error-class' }
+            = f.email_field :email, placeholder: t('checkout.enter_email'), class: 'form-control', id:'email'
+          .form-group.mb-30
+            = f.label :password, class: 'control-label input-label'
+            = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter-passwd'), error_html: { class: 'custom-error-class' }
+            = link_to t('button.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+        = f.submit t('checkout.login_with_password'), class: 'btn btn-default mb-20'
+    .col-md-5.col-md-offset-1.mb-60
+      .text-center
+        %h3.general-subtitle= t('checkout.new_customer')
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
+          %i.fa.fa-facebook-official
+        %p.general-login-text= t('button.or')
+      = simple_form_for(:user, url: user_registration_path, html: { class: 'general-form' }) do |f|
+        .mb-40
+          %p.mb-5= t('checkout.quick_register')
+          %p.general-info-text.font-12.mb-20= t('checkout.quick_description')
+          .form-group.mb-30
+            = f.label :email, class: 'control-label input-label', required: true, autofocus: true, error_html: { class: 'custom-error-class' }
+            = f.email_field :email, placeholder: t('checkout.enter_email'), class: 'form-control', id:'email'
+            - password = Devise.friendly_token.first(10) + '1zZ'
+            = f.hidden_field :password, value: password
+            = f.hidden_field :password_confirmation, value: password
+        = f.submit t('checkout.continue'), class: 'btn btn-default mb-20'
+        %script{src: "https://use.fontawesome.com/67602d7308.js"}

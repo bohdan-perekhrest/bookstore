@@ -1,0 +1,7 @@
+$('#books-container div:first').append("<%= escape_javascript (render partial: 'books') %>");
+
+<% if @pagy.page == @pagy.last %>
+  $('#load-more-books').hide();
+<% else %>
+  $('#load-more-books').attr('href', '<%= books_path(page: (@pagy.page+1)) %>');
+<% end %>

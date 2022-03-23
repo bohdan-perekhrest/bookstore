@@ -1,0 +1,54 @@
+- books = Book.newest
+%main.container
+  #carouselExampleControls.carousel.slide{'data-ride': "carousel"}
+    %ol.carousel-indicators
+      - books.each.with_index(0) do |book, index|
+        %li.active{'data-target': "#carouselExampleControls", 'data-slide-to': index}
+    .carousel-inner{role: "listbox"}
+      - books.each.with_index(0) do |book, index|
+        - presenter = BookPresenter.new(book)
+        .item{class: index.zero? ? 'active' : ''}
+          .row
+            .col-sm-5
+              .general-img-wrap
+                %img.img-shadow.general-thumbnail-img{src: book.image_url, alt: "design-book"}
+            .col-sm-7
+              .mb-60
+                %h1= book.name 
+                %p.lead= presenter.truncate_description 
+                %p.lead.small= presenter.authors_full_names
+                .general-align
+                  %button.disabled.btn Buy Now
+    %a.left.carousel-control{href: "#carouselExampleControls", role: "button", 'data-slide-to': "prev"}
+      %span.icon-prev{'aria-hidden': "true"}
+      %span.sr-only Previous
+    %a.right.carousel-control{href: "#carouselExampleControls", role: "button", 'data-slide-to': "next"}
+      %span.icon-next{'aria-hidden': "true"}
+      %span.sr-only Next
+  .container
+    .jumbotron.text-center.mb-0
+      %h2.h1 Welcome to our amazing Bookstore!
+      .mb-res-50
+        %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
+      = link_to 'Get Started', books_path, type: :button, class: 'btn btn-default'
+    .mb-35
+      %h3 Best Sellers
+      .row
+        - Book.best_sellers.each do |book|
+        - presenter = BookPresenter.new(book)
+          .col-sm-6.col-md-3
+            .general-thumb-wrap
+              .thumbnail.general-thumbnail
+                %img.img-shadow.general-thumbnail-img{src: book.image_url, alt: "design-book_service"}
+                .thumb-hover
+                  .general-thumb-link-wrap
+                    = link_to book_path(id: book.id), class: 'thumb-hover-link' do
+                      %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+                    = link_to order_items_path(order_item: {book_id: book.id, quantity: 1}), method: :post,  class: 'thumb-hover-link' do
+                      %i.fa.fa-shopping-cart.thumb-icon
+              .mb-35
+                .clearfix
+                  %p.pull-right.font-16.in-gold-500= currency_with_price book.price
+                  %p.title.mr-55= book.name
+                %span.divider-sm
+                %p.lead.small= presenter.authors_full_names 

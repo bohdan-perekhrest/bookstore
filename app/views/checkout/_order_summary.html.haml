@@ -1,0 +1,19 @@
+%table.general-summary-table
+  %tr
+    %td
+      %p.font-16= t('confirm.item_total')+':'
+    %td
+      %p.font-16= currency_with_price current_order.subtotal
+  %tr
+    %td
+      %p.font-16= t(cart.coupon)
+    %td
+      - if current_order.coupon.present?
+        %p.font-16= currency_with_price current_order.coupon.value
+      - else
+        %p.font-16= currency_with_price
+  %tr
+    %td
+      %p.font-16= t('cart.total')
+    %td
+      %p.font-16= currency_with_price current_order.total

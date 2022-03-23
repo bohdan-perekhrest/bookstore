@@ -5,28 +5,43 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
+gem 'activeadmin', '~> 2.10'
+gem 'activeadmin_simplemde'
+gem 'aws-sdk-s3', '~> 1.112'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
+<<<<<<< HEAD
 gem 'cancancan', '~> 3.3'
+=======
+gem 'country_select', '~> 6.1', '>= 6.1.1'
+>>>>>>> 612c018 (migration)
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
+gem 'omniauth', '~> 2.0', '>= 2.0.4'
+gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
+gem 'omniauth-facebook', '~> 9.0'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
+gem 'redcarpet', '~> 3.5', '>= 3.5.1'
 gem 'sassc-rails', '>= 2.1.0'
-gem 'simple_form', '~> 5.1'
 gem 'shrine', '~> 3.4'
+gem 'simple_form', '~> 5.1'
 gem 'turbolinks', '~> 5'
+gem 'wicked', '~> 1.4'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec' 
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'fasterer', '~> 0.9.0'
-  gem 'rubocop-rails', '~> 2.13', '>= 2.13.2'
   gem 'simplecov', '~> 0.21.2'
   gem 'shoulda-matchers', '~> 5.1'
 end

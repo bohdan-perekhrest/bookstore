@@ -1,0 +1,56 @@
+.visible-xs
+  - current_order.order_items.each_with_index do |item, i|
+    - presenter = OrderItemPresenter.new(item)
+    .general-cart-item.divider-lg
+      .general-img-wrap-table
+        = link_to book_path(item.book) do
+          = image_tag item.book.image_url, alt: 'design-book', class: 'cart-img-shadow'
+      %p.title= item.book.name
+      %P.in-grey-600.fw-300= presenter.short_description
+      %table.table
+        %tr
+          %td
+            %span.in-grey-600= t('cart.price')
+          %td
+            %span.font-16.in-gold-500= currency_with_price item.book.price
+        %tr
+          %td.vertical-middle
+            %span.in-grey-600= t('cart.quantity')
+          %td
+            %span= item.quantity
+        %tr
+          %td
+            %span.in-grey-600= t('order.total')
+          %td
+            %span.font-16.in-gold-500= currency_with_price item.total_price
+.hidden-xs.divider-lg.pt-20
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          %span.in-grey-600= t('complete.book')
+        %th.col-method
+        %t
+          %span.in-grey-600= t('cart.price')
+        %th
+          %span.in-grey-600= t('cart.quantity')
+        %th
+          %span.in-grey-600= t('order.total')
+    %tbody
+      - current_order.order_items.each do |item|
+        - presenter = OrderItemPresenter.new(item)
+        %tr
+          %td
+            .general-img-wrap-table
+              = link_to book_path(item.book) do
+                = image_tag item.book.image_url, alt: 'design-book', class: 'cart-img-shadow pull-left'
+          %td
+            = link_to book_path(item.book), class: 'text-as-link' do
+              %p.title= item.book.name
+            %p.in-grey-600.fw-300= presenter.short_description 
+          %td
+            %span.font-16.in-gold-500= currency_with_price item.book.price
+          %td
+            %span.ml-30= item.quantity
+          %td
+            %span.font-16.in-gold-500= currency_with_price item.total_price

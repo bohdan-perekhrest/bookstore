@@ -38,6 +38,15 @@ en:
   header:
     logo: 'Bookstore'
 
+  number:
+    currency:
+       format:
+         unit: '€'
+         delimiter: ','
+         separtor: '.'
+         precision: 2
+         format: '%u%n'
+
   page:
     home:
       carusel:
@@ -109,6 +118,7 @@ en:
   user:
     updated: 'Data was successfully updated'
     not_updated: 'Data was not updated'
+    seccess_updating_email: 'E-mail was successfully updated.'
   order:
     my_orders: 'My Orders'
     number: 'Number'
@@ -116,6 +126,7 @@ en:
     statuss: 'Status'
     total: 'Total'
     status:
+      in_progress: 'In Progress'
       in_queue: 'Waiting for processing'
       in_delivery: 'In delivery'
       delivered: 'Delivered'
