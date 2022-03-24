@@ -3,38 +3,26 @@
 class CheckoutAddressesForm
   include ActiveModel::Model
 
-  attr_reader :params, :target, :use_billing
-
-  def initialize(params = false)
+  def initialize(params = {})
     @params = params
     @target = Order.find_by(id: order_id) || User.find_by(id: user_id)
-    @save = false
   end
 
   def errors
     { billing: billing.errors, shipping: shipping.errors }
   end
 
-  def save
-    @save = true
-    return false unless valid?
-    persist!
-    true
-  end
-
   def billing
-    bill = target.addresses.find_or_initialize_by(type: 'Billing')
-    bill.assign_attributes(params_for(:billing)) if save?
-    @billing ||= bill
+    @billing = target.addresses.find_or_initialize_by(type: 'Billing')
   end
 
   def shipping
-    ship = target.addresses.find_or_initialize_by(type: 'Shipping')
-    ship.assign_attributes(params_for(:shipping)) if save?
-    @shipping ||= ship
+    @shipping = target.addresses.find_or_initialize_by(type: 'Shipping')
   end
 
   private
+
+  attr_reader :params, :target, :use_billing
 
   def order_id
     params.fetch(:order_id, false) || (params[:billing][:order_id] if nested?)
@@ -48,17 +36,18 @@ class CheckoutAddressesForm
     params.fetch(:billing, false)
   end
 
-  def save?
-    @save
-  end
-
   def persist!
-    billing.save
-    shipping.save
+    return false unless valid?
+
+    @billing.assign_attributes(params_for(:billing))
+    @shipping.assign_attributes(params_for(:shipping))
+    ActiveRecord::Base.transaction do
+      billing.save
+      shipping.save
+    end
   end
 
   def valid?
-    shipping.valid?
     billing.valid? && shipping.valid?
   end
 
@@ -67,4 +56,3 @@ class CheckoutAddressesForm
     params.require(type).permit(:first_name, :last_name, :city, :country, :zip, :phone, :address, :order_id, :user_id)
   end
 end
-
