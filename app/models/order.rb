@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
+  include AASM
+
   belongs_to :user, optional: true
   belongs_to :coupon, optional: true
   belongs_to :delivery, optional: true
@@ -11,11 +13,34 @@ class Order < ApplicationRecord
   has_one :billing, dependent: :delete_all
   has_one :shipping, dependent: :delete_all
 
-  validates :status, presence: true, acceptance: { accept: %w[in_progress in_queue] }
+  enum status: { in_progress: 0, in_queue: 1, in_delivery: 2, delivered: 3, canceled: 4 }
 
-  scope :proccesing_order, -> { where(status: 'in_queue').order('updated_at').last }
+  aasm column: :status, enum: true do
+    state :in_progress, initial: true
+    state :in_queue
+    state :in_delivery
+    state :delivered
+    state :canceled
 
-  before_validation :update_order_status, on: :create
+    event :in_queue do
+      transitions from: :in_progress, to: :in_queue
+    end
+
+    event :in_delivery do
+      transitions from: :in_queue, to: :in_delivery
+    end
+
+    event :deliver do
+      transitions from: :in_delivery, to: :delivered
+    end
+
+    event :cancel do
+      transitions from: %i[in_queue in_delivery], to: :canceled
+    end
+  end
+
+  scope :proccesing_order, -> { where(status: :in_queue).order('updated_at').last }
+
   before_save :update_subtotal, :update_total, :connect_user
 
   def subtotal
@@ -31,15 +56,11 @@ class Order < ApplicationRecord
   end
 
   def finilize
-    set_order_status('in_queue')
+    in_queue!
     save!
   end
 
   private
-
-  def update_order_status(status = 'in_progress')
-    self[:status] = status
-  end
 
   def connect_user
     self[:user_id] = CurrentSession.user.id unless CurrentSession.user.nil?

@@ -13,11 +13,11 @@ class CheckoutAddressesForm
   end
 
   def billing
-    @billing = target.addresses.find_or_initialize_by(type: :billing)
+    @billing = target.addresses.find_or_initialize_by(type: Address.types[:billing])
   end
 
   def shipping
-    @shipping = target.addresses.find_or_initialize_by(type: :shipping)
+    @shipping = target.addresses.find_or_initialize_by(type: Address.types[:shipping])
   end
 
   private

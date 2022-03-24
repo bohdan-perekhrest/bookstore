@@ -4,7 +4,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :text
       t.integer :star
-      t.string :status
+      t.integer :status
+      t.string :aasm_state
       t.timestamps
     end
     add_reference :reviews, :user, index: true, foreign_key: { on_delete: :cascade }
