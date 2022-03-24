@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration[6.1]
       t.string :country
       t.string :phone
       t.string :address
-      t.string :type
+      t.integer :type
       t.timestamps
     end
     add_reference :addresses, :user, index: true, foreign_key: true
