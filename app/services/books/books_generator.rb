@@ -8,9 +8,7 @@ module BookService
     end
 
     def call
-      pagy, @books = pagy(@books, page: page)
-      books = set_books
-      [pagy, books]
+      pagy(@books, page: page)
     end
 
     private
@@ -20,7 +18,6 @@ module BookService
     def generate_books
       by_category if category_id
       by_filter if filter
-      pagination
     end
 
     def by_category
@@ -29,10 +26,6 @@ module BookService
 
     def by_filter
       @books = BooksQuery.new(@books).by_filter(filter)
-    end
-
-    def set_books
-      @books.each_slice(4).to_a
     end
 
     def category_id

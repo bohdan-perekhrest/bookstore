@@ -36,6 +36,7 @@ module Showable
       return jump_to(:addresses) unless session[:complete_order]
 
       @order = current_user.orders.proccesing_order.decorate
+      @order_presenter = OrderPresenter.new(@order)
       session[:complete_order] = nil
     end
 

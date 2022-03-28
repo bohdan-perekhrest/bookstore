@@ -1,8 +1,7 @@
-- presenter = DropdownsPresenter.new(params[:filter])
 .dropdowns.pull-right
   .dropdown.width-240
     %a.dropdown-toggle.lead.small{'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false", 'id': "dropdownMenuButton1", 'data-bs-toggle': "dropdown"}
-      = presenter.main_text
+      = @dropdown_presenter.main_text
       %i.fa.fa-angle-down.dropdown-icon.pull-right
     %ul.dropdown-menu{'aria-labelledby': "dropdownMenuButton1"}
       %li

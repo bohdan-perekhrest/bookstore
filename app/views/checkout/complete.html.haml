@@ -1,18 +1,17 @@
-- presenter = OrderPresenter.new(@order)
 %main.container.general-main-wrap
   = render partial: 'progress'
   .text-center.mb-40
     %h3.general-subtitle= t('complete.thanks')
-    %p.fw-300= presenter.email
+    %p.fw-300= @order_presenter.email
   .row.mb-20
     .col-sm-6
       .visible-xs
-        %p.general-order-number.mb-0= presenter.sharp_number
-        %p.general-address.mb-30= presenter.creation_date
+        %p.general-order-number.mb-0= @order_presenter.sharp_number
+        %p.general-address.mb-30= @order_presenter.creation_date
       = render partial: 'addresses_short', locals: {address: @order.shipping}
     .col-sm-6.hidden-xs.text-right
-      %p.general-order-number.mb-0= presenter.sharp_number
-      %p.general-address.mb-30= presenter.creation_date
+      %p.general-order-number.mb-0= @order_presenter.sharp_number
+      %p.general-address.mb-30= @order_presenter.creation_date
   = render partial: 'list_of_items', locals: {current_order: @order}
   .mb-55
     = render partial: 'order_summary', locals: {current_order: @order}

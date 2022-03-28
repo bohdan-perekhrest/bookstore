@@ -59,7 +59,7 @@ class Order < ApplicationRecord
   end
 
   def self.proccesing_order
-    where(status: :in_queue).order('updated_at').limit(1)
+    in_queue.order('updated_at').limit(1)
   end
 
   private

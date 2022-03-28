@@ -8,7 +8,11 @@ class BooksController < ApplicationController
 
   def index
     @pagy, @books = Books::BooksGenerator.new(params, books: @books).call
+    @books_set_presenter = BooksSetPresenter.new(@books)
+    @dropdown_presenter = DropdownsPresenter.new(params[:filter])
   end
 
-  def show; end
+  def show
+    @book_presenter = BookPresenter.new(@book)
+  end
 end
