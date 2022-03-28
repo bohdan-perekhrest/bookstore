@@ -39,9 +39,7 @@ class Order < ApplicationRecord
     end
   end
 
-  scope :proccesing_order, -> { where(status: :in_queue).order('updated_at').last }
-
-  before_save :update_subtotal, :update_total, :connect_user
+  before_save :update_subtotal, :update_total
 
   def subtotal
     order_items.sum(&:total_price)
@@ -60,17 +58,17 @@ class Order < ApplicationRecord
     save!
   end
 
-  private
-
-  def connect_user
-    self[:user_id] = CurrentSession.user.id unless CurrentSession.user.nil?
+  def self.proccesing_order
+    where(status: :in_queue).order('updated_at').limit(1)
   end
 
+  private
+
   def update_subtotal
-    self[:subtotal] = subtotal
+    assign_attributes(subtotal: subtotal)
   end
 
   def update_total
-    self[:total] = total
+    assign_attributes(total: total)
   end
 end

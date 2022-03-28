@@ -3,6 +3,8 @@
 class BookPresenter < BasePresenter
   include ApplicationHelper
 
+  DESCRIPTION_LENGTH = 250
+
   attr_reader :book
 
   def initialize(book)
@@ -18,8 +20,8 @@ class BookPresenter < BasePresenter
   end
 
   def truncate_description
-    if book.description.length > 250
-      markdown(book.description.truncate(250))
+    if book.description.length > DESCRIPTION_LENGTH
+      markdown(book.description.truncate(DESCRIPTION_LENGTH))
     else
       markdown(book.description)
     end

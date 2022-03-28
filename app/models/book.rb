@@ -17,9 +17,10 @@ class Book < ApplicationRecord
   validates :materials, length: { maximum: 80 }
   validates :description, length: { in: 5...2000 }
 
-  scope :newest, -> { last(3) }
-  scope :best_sellers, lambda { |count = 4|
+  scope :newest, -> { limit(3).order('id desc') }
+
+  def self.best_sellers(count = 4)
     all.group_by { |book| book.order_items.map(&:quantity).sum }
-       .max_by(count) { |key, _value| key }.transpose[1].flatten.first(count)
-  }
+    .max_by(count) { |key, _value| key }.transpose[1].flatten.limit(count)
+  end
 end

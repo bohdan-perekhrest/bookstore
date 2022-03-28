@@ -3,6 +3,9 @@
 class Review < ApplicationRecord
   include AASM
 
+  TITLE_LENGTH = 80
+  TEXT_LENGTH = 500
+
   belongs_to :user
   belongs_to :book
 
@@ -24,6 +27,6 @@ class Review < ApplicationRecord
 
   validates :title, :text, :star, :status, presence: true
   validates :title, :text, format: { with: %r{[\w\d\s]+[-!#$%&'*+/=?^_`{|}~.,]?} }
-  validates :title, length: { maximum: 80 }
-  validates :text, length: { maximum: 500 }
+  validates :title, length: { maximum: TITLE_LENGTH }
+  validates :text, length: { maximum: TEXT_LENGTH }
 end

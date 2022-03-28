@@ -9,7 +9,6 @@ class HeaderPresenter < BasePresenter
   end
 
   def order_items_count
-    Order.find_by(id: order_id).order_items.count
+    Order.find_by(id: order_id)&.order_items&.count || 0
   end
 end
-

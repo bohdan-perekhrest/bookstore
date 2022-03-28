@@ -2,12 +2,12 @@
 
 class DropdownsPresenter < BasePresenter
   DROPDOWN = {
-    newest: 'Newest first',
-    popular: 'Popular first',
-    price_up: 'Price: Low to high',
-    price_down: 'Price: High to low',
-    a_z: 'Title A - Z',
-    z_a: 'Title Z - A'
+    newest: t('button.newest_first'),
+    popular: t('button.popular_first'),
+    price_up: t('button.low_to_hight'),
+    price_down: t('button.hight_to_low'),
+    a_z: t('button.title_A-Z'),
+    z_a: t('button.title_A-Z')
   }
 
   attr_reader :filter
@@ -17,6 +17,6 @@ class DropdownsPresenter < BasePresenter
   end
 
   def main_text
-    filter ? DROPDOWN[filter.to_sym] : 'Newest first'
+    filter ? DROPDOWN[filter.to_sym] : DROPDOWN[:newest]
   end
 end

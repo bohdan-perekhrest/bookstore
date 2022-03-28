@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   def set_order_id
     session[:order_id] ||= Order.create.id
     order = Order.find_by(id: session[:order_id])
-    order.save if order.user_id.nil?
+    order.user = current_user if order.user_id.nil?
   end
 end

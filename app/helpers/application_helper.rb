@@ -45,7 +45,7 @@ module ApplicationHelper
     country.translations[I18n.locale.to_s] || country.name
   end
 
-  def active_step?(current_step)
+  def active_step(current_step)
     'active' if current_step == step
   end
 

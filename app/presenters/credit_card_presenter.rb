@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class CreditCardPresenter < BasePresenter
-  
+  NUMBER_OF_LAST_NUMBERS = 4
+
   attr_reader :credit_card
 
   def initialize(credit_card)
@@ -9,7 +10,6 @@ class CreditCardPresenter < BasePresenter
   end
 
   def secret_card_number
-    '**** **** **** ' + credit_card.number.last(4) 
+    '**** **** **** ' + credit_card.number.last(NUMBER_OF_LAST_NUMBERS) 
   end
 end
-

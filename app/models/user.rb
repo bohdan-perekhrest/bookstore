@@ -17,8 +17,6 @@ class User < ApplicationRecord
 
   validates :password, format: { with: /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)\S{8,}\z/ }, unless :skip_password_validation
 
-  scope :billing, -> { addresses.where(type: 'billing') }
-
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']

@@ -1,61 +1,67 @@
 # frozen_string_literal: true
 
 class AddressPresenter < BasePresenter
-
-  attr_reader :user, :type
+  attr_reader :user, :address
 
   def initialize(user, type)
     @user = user
     @type = type.downcase
+    @address = public_send(@type)
   end
 
   def first_name
     return nil unless exist?
-    send(type).first_name
+
+    @address.first_name
   end
 
   def last_name
     return nil unless exist?
-    send(type).last_name
+
+    @address.last_name
   end
 
   def address
     return nil unless exist?
-    send(type).address
+
+    @address.address
   end
 
   def city
     return nil unless exist?
-    send(type).city
+
+    @address.city
   end
 
   def zip
     return nil unless exist?
-    send(type).zip
+
+    @address.zip
   end
 
   def country
     return nil unless exist?
-    send(type).country
+
+    @address.country
   end
 
   def phone
     return nil unless exist?
-    send(type).phone
+    
+    @address.phone
   end
 
   private
 
   def exist?
-    send(type).nil? ? false : true
+    @address.nil?
   end
 
   def billing
-    user.billing
+    user.billing || Billing.new
   end
 
   def shipping
-    user.shipping
+    user.shipping || Shipping.new
   end
 end
-
