@@ -3,19 +3,13 @@
 module Users
   module Account
     class OrdersController < ApplicationController
-      before_action :order
+      load_and_authorize_resource :order
 
       def index
-        @orders = OrderQuery.new(user_id: current_user.id).by_filter(params[:filter])
+        @orders = OrderQuery.new(orders: @orders).by_filter(params[:filter])
       end
 
       def show; end
-
-      private
-
-      def order
-        @order = Order.find_by(id: params[:id])
-      end
     end
   end
 end
