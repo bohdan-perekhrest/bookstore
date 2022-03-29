@@ -21,7 +21,7 @@ class ReviewPresenter < BasePresenter
     MAX_STARS - review.star
   end
 
-  def verified_user
+  def verified_user?
     # TODO: when there is be orders add verified user
   end
 end

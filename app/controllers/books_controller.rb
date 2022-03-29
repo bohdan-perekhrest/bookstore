@@ -14,5 +14,6 @@ class BooksController < ApplicationController
 
   def show
     @book_presenter = BookPresenter.new(@book)
+    @reviews_presenter = @book.reviews.approved.map { |review| ReviewPresenter.new(review) }
   end
 end

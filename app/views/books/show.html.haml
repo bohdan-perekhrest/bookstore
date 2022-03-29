@@ -47,4 +47,4 @@
       = render partial: 'review', locals: {user_id: current_user.id, book_id: @book.id}
   .mb-80
     - if @book.reviews.approved.present? 
-      = render partial: 'reviews', locals: {reviews: @book.reviews.approved} 
+      = render partial: 'reviews', locals: {reviews: @reviews_presenter} 

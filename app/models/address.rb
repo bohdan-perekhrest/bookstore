@@ -7,6 +7,8 @@ class Address < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :order, optional: true
 
+  delegate :first_name, :last_name, :zip, :city, :addres, :country, :phone, to: :address
+
   enum type: { billing: 0, shipping: 1 }
 
   validates :first_name, :last_name, :zip, :country, :phone, :address, presence: true

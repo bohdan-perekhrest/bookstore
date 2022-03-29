@@ -11,8 +11,8 @@
         .col-md-5.mb-40
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('settings.billing')
-          = render partial: 'form', locals: {type: 'Billing'}
+          = render partial: 'form', locals: {type: :billing}
         .col-md-5.col-md-offset-1.mb-25
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('settings.shipping')
-          = render partial: 'form', locals: {type: 'Shipping'}
+          = render partial: 'form', locals: {type: :shipping}

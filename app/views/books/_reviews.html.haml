@@ -1,16 +1,15 @@
 %h3.in-gold-500.mb-25= t('review.reviews') + " (#{@reviews.count})"
-- reviews.each do |review|  
-  - presenter = ReviewPresenter.new(review)
+- reviews.each do |review_presenter|  
   .general-message-wrap.divider-lg
     .clearfix
       %div
-        .general-message-date.hidden-xs= presenter.created_at_formated
+        .general-message-date.hidden-xs= review_presenter.created_at_formated
         .max-240
-          .general-message-verified= t('review.verified') if review.verified?
-          .general-message-name= presenter.user_full_name 
+          .general-message-verified= t('review.verified') if review_presenter.verified_user?
+          .general-message-name= review_presenter.user_full_name 
       .mb-15
-        - review.star.times do
+        - review_presenter.object.star.times do
           %i.fa.fa-star.rate-star
-        - presenter.number_of_empty_stars.times do 
+        - review_presenter.number_of_empty_stars.times do 
           %i.fa.fa-star.rate-empty
-      %p= review.text 
+      %p= review_presenter.object.text 
