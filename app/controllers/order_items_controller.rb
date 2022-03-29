@@ -9,11 +9,11 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    redirect_to order_index_path if @order_item.update(quantity: order_item_params[:quantity]) && current_order.save
+    redirect_to order_index_path if @order_item.assign_attributes(quantity: order_item_params[:quantity]) && current_order.save
   end
 
   def destroy
-    redirect_to order_index_path if @order_item.delete  && current_order.save
+    redirect_to order_index_path if @order_item.delete && current_order.save
   end
 
   private

@@ -3,8 +3,8 @@
 class OrderQuery
   attr_reader :relation, :user_id
 
-  def initialize(orders:)
-    @order = orders
+  def initialize(relation = Order.all)
+    @relation = relation
   end
 
   def by_filter(filter)
@@ -20,7 +20,7 @@ class OrderQuery
   private
 
   def all
-    orders.where.not(status: 'in_progress')
+    relation.where.not(status: 'in_progress')
   end
 
   def in_queue

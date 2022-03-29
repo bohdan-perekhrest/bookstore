@@ -1,25 +1,23 @@
-- presenter = OrderPresenter.new(@order)
 %main.container.general-main-wrap
-  %h1.general-title-margin= "Order #{presenter.number}"
+  %h1.general-title-margin= "Order #{@order_presenter.number}"
   .row.mb-20
     .col-sm-3
       %h3.general-subtitle.mt-0= t('settings.shipping')
-      = render partial: 'address_short', locals: {address: @order.addresses.where(type: 'Shipping').first}
+      = render partial: 'address_short', locals: {address: @order.addresses.shipping}
     .col-sm-3
       %h3.general-subtitle.mt-0= t('settings.billing')
-      = render partial: 'address_short', locals: {address: @order.addresses.where(type: 'Billing').first}
+      = render partial: 'address_short', locals: {address: @order.addresses.billing}
     .col-sm-3
       %h3.general-subtitle.mt-0= t('confirm.shipments')
       %p.general-address
-        = @order.delivery.name
+        = @order_presenter.delivery_name
         %br
-        = @order.delivery.duration
+        = @order_presenter.delivery_duration
     .col-sm-3
       %h3.general-subtitle.mt-0= t('confirm.payment_info')
-      - credit_card_presenter = CreditCardPresenter.new(@order.credit_card)
       %p.general-address
-        = credit_card_presenter.secret_card_number
+        = @credit_card_presenter.secret_card_number
         %br
-        = @order.credit_card.mm_yy
-  = render partial: 'list_of_items', locals: {order_items: @order.order_items}
-  = render partial: 'order_summary', locals: {order: @order}
+        = @order_presenter.credit_card_date
+  = render partial: 'list_of_items', locals: { order_items: @order_items }
+  = render partial: 'order_summary', locals: { order: @order }

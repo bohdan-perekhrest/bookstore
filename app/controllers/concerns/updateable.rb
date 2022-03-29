@@ -12,7 +12,7 @@ module Updateable
     end
 
     def update_delivery
-      current_order.update(order_params)
+      current_order.assign_attributes(order_params)
       flash[:notice] = t('delivery.pickup') if current_order.delivery_id.nil?
     end
 
