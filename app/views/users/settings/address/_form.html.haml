@@ -1,5 +1,4 @@
 = simple_form_for(:address, url: address_path, method: :patch) do |f|
-  - presenter = AddressPresenter.new(current_user, type)
   = f.hidden_field :type, value: type
   .form-group
     = f.label :first_name, class: 'control-label input-label'
