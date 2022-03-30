@@ -48,7 +48,6 @@ Rails/OutputSafety:
 
 Lint/MissingSuper:
   Enabled: false
-
 Style/RedundantFetchBlock:
   Exclude:
     - app/forms/addresses_form.rb
