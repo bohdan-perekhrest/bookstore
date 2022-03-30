@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe ReviewPolicy do
+describe 'ReviewPolicy' do
   subject { described_class.new(user, review) }
 
-  let(:review) { create(:review) }
+  let(:review) { FactoryBot.create(:review) }
 
   context 'being a visitor' do
     let(:user) { nil }
@@ -13,7 +13,7 @@ describe ReviewPolicy do
   end
 
   context 'being an authorized user' do
-    let(:user) { create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     it { is_expected.to permit_actions([:show, :create]) }
   end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe CreditCardPolicy do
+describe 'CreditCardPolicy' do
   subject { described_class.new(user, credit_card) }
 
-  let(:credit_card) { create(:credit_card) }
+  let(:credit_card) { FactoryBot.create(:credit_card) }
 
   context 'being a visitor' do
     let(:user) { nil }
@@ -14,7 +14,7 @@ describe CreditCardPolicy do
   end
 
   context 'being an authorized user' do
-    let(:user) { create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     it { is_expected.to permit_actions([:read, :create, :update]) }
   end

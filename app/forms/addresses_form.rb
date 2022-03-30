@@ -38,15 +38,15 @@ class AddressesForm
   private
 
   def order_id
-    params.fetch(:order_id, false) || (params[:billing][:order_id] if nested?)
+    params.fetch(:order_id) { false } || (params[:billing][:order_id] if nested?)
   end
 
   def user_id
-    params.fetch(:user_id, false) || (params[:billing][:user_id] if nested?)
+    params.fetch(:user_id) { false } || (params[:billing][:user_id] if nested?)
   end
 
   def nested?
-    params.fetch(:billing, false)
+    params.fetch(:billing) { false }
   end
 
   def valid?

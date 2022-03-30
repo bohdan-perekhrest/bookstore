@@ -32,7 +32,7 @@ RSpec.describe OrderItemsController, type: :controller do
     end
 
     it 'assign @order_items' do
-      xpect(assigns(:order_items)).to match_array(order.order_items)
+      expect(assigns(:order_items)).to match_array(order.order_items)
     end
   end
 
@@ -42,4 +42,4 @@ RSpec.describe OrderItemsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-ende
+end

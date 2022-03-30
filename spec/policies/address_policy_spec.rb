@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe AddressPolicy do
+describe 'AddressPolicy' do
   subject { described_class.new(user, address) }
 
-  let(:address) { create(:address) }
+  let(:address) { FactoryBot.create(:address) }
 
   context 'being a visitor' do
     let(:user) { nil }
@@ -14,7 +14,7 @@ describe AddressPolicy do
   end
 
   context 'being an authorized user' do
-    let(:user) { create(:user) }
+    let(:user) { FactoryBot.create(:user) }
 
     it { is_expected.to permit_actions([:read, :create, :update]) }
   end

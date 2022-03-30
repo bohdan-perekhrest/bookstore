@@ -36,7 +36,7 @@ gem 'wicked', '~> 1.4'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '~> 6.0'
   gem 'rspec-rails', '~> 5.1'
   gem 'rubocop'
   gem 'rubocop-performance'

@@ -8,7 +8,7 @@ RSpec.describe OrderQuery do
     15.times { FactoryBot.create(:order, :with_order_item, user: @user)}
   end
 
-  subject { OrderQuery.new(user_id: @user.id) }
+  subject { OrderQuery.new }
 
   context '#by_filter' do
     it 'unless give set to query it will work with all Orders' do
