@@ -11,6 +11,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.float :width
       t.float :depth
       t.string :materials
+      t.integer :published_at
       t.timestamps
     end
     add_reference :books, :category, foreign_key: { on_delete: :cascade}, index: true

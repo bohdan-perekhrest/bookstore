@@ -1,6 +1,7 @@
 Pagy::DEFAULT[:page] = 1 # default page to start with
 Pagy::DEFAULT[:items] = 12 # items per page
-Pagy::DEFAULT[:cycle] = true # when on last page, click "Next" to go to first page
+Pagy::DEFAULT[:cycle] = false # when on last page, click "Next" to go to first page
+Pagy::DEFAULT[:link_extra] = 'data-remote="true"'
 
 require 'pagy/extras/items'
 Pagy::DEFAULT[:max_items] = 100 # max items possible per page

@@ -14,7 +14,7 @@ class Ability
       can :manage, User, id: user.id
     else
       can :read, Review, status: true
-      can :read, [Book, Image, Author]
+      can :read, [Book, Image, Author, Category]
       can %i[create read update], Order
       can :manage, OrderItem
     end

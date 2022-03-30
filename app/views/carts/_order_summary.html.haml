@@ -1,0 +1,21 @@
+%p.in-gold-500.font-18= t('cart.summary')
+%table.general-summary-table.general-summary-table-right.general-text-right
+  %tr
+    %td
+      %p.font-16= t('cart.subtotal')+':'
+    %td
+      %p.font-16= currency_with_price order.subtotal 
+  %tr
+    %td
+      %p.font-16= t('cart.coupon')+':'
+    %td
+      - if order.coupon.present?
+        %p.font-16= currency_with_price order.coupon.value
+      - else
+        %p.font-16= currency_with_price
+  %tr
+    %td
+      %strong.font-18= t('cart.total')+':'
+    %td
+      %strong.font-18= currency_with_price order.total
+%button.btn.btn-default.mb-20.visible-xs-inline-block= t('cart.checkout') 

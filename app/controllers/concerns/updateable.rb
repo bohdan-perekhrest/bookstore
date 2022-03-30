@@ -27,7 +27,7 @@ module Updateable
     end
 
     def credit_card_params
-      params.require(:credit_card).permit(:number, :name, :mm_yy, :cvv)
+      params.require(:credit_card).merge(order: current_order).permit(:number, :name, :mm_yy, :cvv, :order)
     end
 
     def order_params
