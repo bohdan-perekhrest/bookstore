@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    @order.assign_attributes(coupon_id: @coupon.id) if @coupon
+    @order.update_attributes(coupon_id: @coupon.id) if @coupon
     redirect_to order_index_path, notice: @coupon ? I18n.t('flash.coupon_applied') : I18n.t('flash.fake_coupon')
   end
 

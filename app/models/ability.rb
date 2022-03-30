@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.persisted?
-      can :read, [Book, Image, Author, Category, Delivery, Coupon]
+      can :read, [Book, Author, Category, Delivery, Coupon]
       can :read, Review, status: true
       can :create, Review
       can %i[read create update], [Order, Address, CreditCard], user_id: user.id
@@ -14,7 +14,7 @@ class Ability
       can :manage, User, id: user.id
     else
       can :read, Review, status: true
-      can :read, [Book, Image, Author, Category]
+      can :read, [Book, Author, Category, Coupon]
       can %i[create read update], Order
       can :manage, OrderItem
     end

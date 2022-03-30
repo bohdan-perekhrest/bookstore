@@ -3,6 +3,8 @@
 class OrderQuery
   attr_reader :relation, :user_id
 
+  delegate :in_queue, :in_delivery, :delivered, :canceled, to: :all
+
   def initialize(relation = Order.all)
     @relation = relation
   end
@@ -21,21 +23,5 @@ class OrderQuery
 
   def all
     relation.where.not(status: 'in_progress')
-  end
-
-  def in_queue
-    all.where(status: 'in_queue')
-  end
-
-  def in_delivery
-    all.where(status: 'in_delivery')
-  end
-
-  def delivered
-    all.where(status: 'delivered')
-  end
-
-  def canceled
-    all.where(status: 'canceled')
   end
 end
