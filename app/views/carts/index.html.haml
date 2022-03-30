@@ -1,8 +1,8 @@
 %main.container.general-main-wrap
   %h1.general-title-margin= t('cart.cart')
   .visible-xs
-    - @order_items.each do |item|
-      = render partial: 'order_item_xs', locals: {item: item}
+    - @order_items.each do |item_presenter|
+      = render partial: 'order_item_xs', locals: { item_presenter: item_presenter }
   .hidden-xs
     %table.table.table-hover
       %tr.no-hover
@@ -17,12 +17,12 @@
           %span.in-grey-600= t('cart.subtotal')
         %th.col-close
       - @order_items.each do |item_presenter|
-        = render partial: 'order_item', locals: {item_presenter: item_presenter}
+        = render partial: 'order_item', locals: { item_presenter: item_presenter }
   .general-order-wrap
     .row
       .col-sm-4
         = render partial: 'coupon'
       .col-sm-8
         .res-mr-200.text-center.general-text-right
-          = render partial: 'order_summary', locals: {order: @order}
+          = render partial: 'order_summary', locals: {order: current_order}
   = link_to t('cart.checkout'), checkout_index_path, class: 'btn btn-default mb-20'

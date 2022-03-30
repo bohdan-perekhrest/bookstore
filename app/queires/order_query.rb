@@ -22,6 +22,6 @@ class OrderQuery
   private
 
   def all
-    relation.where.not(status: 'in_progress')
+    relation.not_in_progress
   end
 end

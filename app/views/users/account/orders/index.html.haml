@@ -1,7 +1,7 @@
 %main.container.general-main-wrap
   %h1.mt-0.mb-25= t('order.my_orders')
   %p.lead.small.mb-10.visible-xs= t('page.book.sort_by')
-  = render partial: 'dropdown', locals: { dropdown_presentet: @dropdown_presenter }
+  = render partial: 'dropdown', locals: { dropdown_presenter: @dropdown_presenter }
   .visible-xs
     - @orders.each do |order_presenter|
       .general-cart-item.divider-lg-bottom.pt-0

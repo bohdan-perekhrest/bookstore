@@ -11,7 +11,7 @@ module Showable
     end
 
     def show_addresses
-      @addresses = CheckoutAddressesForm.new(show_address_params)
+      @addresses = AddressesForm.new(show_address_params)
     end
 
     def show_delivery

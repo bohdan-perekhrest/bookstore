@@ -3,7 +3,7 @@
 class Coupon < ApplicationRecord
   CODE_LENGTH = 15
 
-  has_many :orders, dependent: :nothing
+  has_many :orders
 
   validates :code, :value, presence: true
   validates :code, uniqueness: true

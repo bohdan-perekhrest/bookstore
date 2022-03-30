@@ -7,8 +7,8 @@ module Updateable
     private
 
     def update_addresses
-      @addresses = CheckoutAddressesForm.new(addresses_params)
-      render_wizard unless @addresses.save
+      @addresses = AddressesForm.new(addresses_params)
+      render_wizard unless @addresses.persist!
     end
 
     def update_delivery

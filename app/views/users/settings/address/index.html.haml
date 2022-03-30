@@ -1,18 +1,34 @@
 %main.container
   = render partial: 'users/settings/tab'
-  .tab-content
+  = form_for @addresses, url: address_path, method: :patch, class: 'res-mb-100' do |f|
     .hidden-xs.hidden-sm
       .row
         .col-md-5
-          %h3.general-subtitle.mt-0= t('settings.billing')
+          %h3.general-subtitle= t('settings.billing')
         .col-md-5.col-md-offset-1
-          %h3.general-subtitle.mt-0= t('settings.shipping')
-      .row
-        .col-md-5.mb-40
-          .visible-xs.visible-sm
-            %h3.general-subtitle.mt-0= t('settings.billing')
-          = render partial: 'form', locals: { presenter: AddressPresenter.new(current_user, :billing) }
-        .col-md-5.col-md-offset-1.mb-25
-          .visible-xs.visible-sm
-            %h3.general-subtitle.mt-0= t('settings.shipping')
-          = render partial: 'form', locals: { presenter: AddressPresenter.new(current_user, :shipping) }
+          %h3.general-subtitle= t('settings.shipping')
+    .row
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('settings.billing')
+        = f.fields_for @addresses.billing do |ff|
+          - bill_errors = @addresses.billing.errors
+          = render partial: 'form', locals: {ff: ff, errors: bill_errors}
+          = f.hidden_field "[billing][order_id]", value: current_order.id
+          = f.hidden_field "[billing][user_id]", value: current_user.id
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('settings.shipping')
+        = f.fields_for @addresses.shipping do |ff|
+          - ship_errors = @addresses.shipping.errors
+          = render partial: 'form', locals: {ff: ff, errors: ship_errors}
+          = f.hidden_field "[billing][order_id]", value: current_order.id
+          = f.hidden_field "[billing][user_id]", value: current_user.id
+        .form-group.checkbox
+          %label.checkbox-label
+            = f.check_box :use_billing, class: 'checkbox-input', id: 'use_billing', hidden: true
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text= t('settings.use_billing')
+    .general-text-align.mb-60
+      = f.submit t('settings.save'), class: 'btn btn-default center-block mb-20'

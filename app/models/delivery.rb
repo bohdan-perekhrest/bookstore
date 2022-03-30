@@ -4,7 +4,7 @@ class Delivery < ApplicationRecord
   MIN_PRICE = 0.01
   NAME_LENGTH = 3..100
 
-  has_many :orders, dependent: :nothing
+  has_many :orders
 
   validates :name, :duration, :price, presence: true
   validates :price, numericality: { minimum: MIN_PRICE }

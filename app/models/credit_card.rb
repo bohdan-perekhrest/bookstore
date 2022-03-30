@@ -3,7 +3,7 @@
 class CreditCard < ApplicationRecord
   CVV_LENGTH = 3..4
 
-  has_one :order, dependent: :nothing
+  has_one :order
 
   validates :number, :name, :mm_yy, :cvv, presence: true
   validates :cvv, length: { in: CVV_LENGTH }

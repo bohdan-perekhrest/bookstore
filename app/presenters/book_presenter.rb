@@ -6,7 +6,7 @@ class BookPresenter < BasePresenter
   DESCRIPTION_LENGTH = 250
   SHORT_DESCRIPTION_LENGTH = 75
 
-  attr_reader :book, :order_item_id
+  attr_reader :book, :order_item
 
   def initialize(book, order_item = nil)
     @book = book

@@ -3,11 +3,12 @@
 module Users
   module Account
     class OrdersController < ApplicationController
-      load_and_authorize_resource :order
+      load_and_authorize_resource
 
       def index
-        @orders = OrderQuery.new(orders: @orders).by_filter(params[:filter]).map { |order| OrderPresenter.new(order) }
+        @orders = OrderQuery.new(@orders).by_filter(params[:filter]).map { |order| OrderPresenter.new(order) }
         @dropdown_presenter = DropdownsPresenter.new(params[:filter])
+        redirect_to books_path, notice: I18n.t('order.missing') if @orders.empty?
       end
 
       def show

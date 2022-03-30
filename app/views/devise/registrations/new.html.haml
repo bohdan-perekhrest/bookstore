@@ -7,13 +7,13 @@
   = simple_form_for(:user, url: user_registration_path,  html: { class: 'general-form'}) do |f|
     .form-group.mb-30
       = f.label :email, class: 'control-label input-label', require: 'true'
-      = f.email_field :email, placeholder: t('page.settings.enter_e-mail'), class: 'form-control', id:'email'
+      = f.email_field :email, placeholder: t('settings.enter_e-mail'), class: 'form-control', id:'email'
     .form-group.mb-30
       = f.label :password, class: 'control-label input-label'
-      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('page.settings.enter-passwd')
+      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter-passwd')
     .form-group.mb-30
       = f.label :password_confirmation, class: 'control-label input-label'
-      = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: t('page.settings.confirm_password')
+      = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: t('settings.confirm_password')
     .text-center
       = f.submit t('button.back_to_store'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center

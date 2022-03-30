@@ -2,7 +2,7 @@
   %td
     .general-img-wrap-table
       = link_to book_path(item_presenter.book.id) do
-        = image_tag(item_presenter.book.image class: 'cart-img-shadow pull-left', alt: item_presenter.book.name)
+        = image_tag(item_presenter.book.image, class: 'cart-img-shadow pull-left', alt: item_presenter.book.name)
   %td
     = link_to book_path(item_presenter.book.id), class: 'text-as-link' do
       %p.title= item_presenter.book.name
@@ -12,7 +12,7 @@
     .input-group
       = link_to order_item_path(id: item_presenter.order_item.id, order_item: {quantity: item_presenter.order_item.quantity-1}), class: 'input-link', id: "order_#{item_presenter.order_item.id}_minus", method: :put, remote: true do
         %i.fa.fa-minus.line-height-40
-      %input.form-control.quantity-input{type: 'text', value: item.quantity, readonly: true}
+      %input.form-control.quantity-input{type: 'text', value: item_presenter.order_item.quantity, readonly: true}
       = link_to order_item_path(id: item_presenter.order_item.id, order_item: {quantity: item_presenter.order_item.quantity+1}), class: 'input-link', id: "order_#{item_presenter.order_item.id}_plus", method: :put, remote: true  do
         %i.fa.fa-plus.line-height-40
   %td

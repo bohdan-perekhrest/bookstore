@@ -2,7 +2,7 @@
   = link_to order_item_path(order_id: session[:order_id], id: item_presenter.order_item.id), method: :delete, class: 'close general-cart-close', 'aria-label': 'Close'  do
     %span{'aria-hidden': "true"} &times;
   .general-img-wrap-table
-    = image_tag(item.book.image class: 'cart-img-shadow', alt: item_presenter.book.name)
+    = image_tag(item_presenter.book.image, class: 'cart-img-shadow', alt: item_presenter.book.name)
   %p.title= item_presenter.book.name
   %table.table
     %tr

@@ -6,7 +6,7 @@
       %p.font-16= currency_with_price current_order.subtotal
   %tr
     %td
-      %p.font-16= t(cart.coupon)
+      %p.font-16= t('cart.coupon')
     %td
       - if current_order.coupon.present?
         %p.font-16= currency_with_price current_order.coupon.value

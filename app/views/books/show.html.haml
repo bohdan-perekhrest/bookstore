@@ -21,19 +21,14 @@
             %p.h1.in-gold-500.mt-10= currency_with_price @book.price 
           .col-xs-5.col-md-3
             .input-group.general-position
-              %a.input-link{href: "#"}
-                %i.fa.fa-minus.line-height-40
               = f.text_field :quantity, value: 1, class: 'form-control quantity-input', min: 1
-              %a.input-link{href: "#"}
-                %i.fa.fa-plus.line-height-40
           .col-xs-7.col-md-5
             = f.hidden_field :book_id, value: @book.id
             = f.submit t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'
       .general-info-wrap.divider-lg
         %p= t('page.book.show.description')
-        %p.lead.small.line-height-2
-          = @book_presenter.truncate_description
-          = link_to t('button.read_more'), '#collapseExample', role: 'button', 'aria-expanded': false, 'aria-controls':'collapseExample'
+        %p.lead.small.line-height-2.collapse#description= @book.description
+        %a.collapsed{ 'data-bs-toggle':"collapse", 'href':"#description", 'aria-expanded':"false", 'aria-controls':"collapseSummary" }
       .general-info-wrap.divider-lg
         .clearfix
           %p.pull-left= t('page.book.show.published_at')

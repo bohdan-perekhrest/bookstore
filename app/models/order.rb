@@ -10,8 +10,8 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :delete_all
   has_many :books, through: :order_items
   has_many :addresses, dependent: :destroy
-  has_one :billing, dependent: :delete_all
-  has_one :shipping, dependent: :delete_all
+  has_one :billing, dependent: :delete
+  has_one :shipping, dependent: :delete
 
   enum status: { in_progress: 0, in_queue: 1, in_delivery: 2, delivered: 3, canceled: 4 }
 

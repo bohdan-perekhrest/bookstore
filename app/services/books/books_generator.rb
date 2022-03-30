@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module BookService
+module Books
   class BooksGenerator < ApplicationService
     def initialize(params, books:)
       @params = params
