@@ -15,6 +15,7 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'capybara/rspec'
 require 'factory_bot_rails'
+require 'pundit/matchers'
 Capybara.javascript_driver = :webkit
 Capybara.default_max_wait_time = 5
 
