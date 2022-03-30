@@ -57,7 +57,7 @@ module ApplicationHelper
     "#{object.city} #{object.zip}"
   end
 
-  def currency_with_price(price=0.00)
+  def currency_with_price(price = 0.00)
     "€#{price}"
   end
 end

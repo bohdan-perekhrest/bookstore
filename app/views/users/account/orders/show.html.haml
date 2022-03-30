@@ -1,0 +1,23 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= "Order #{@order_presenter.number}"
+  .row.mb-20
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('settings.shipping')
+      = render partial: 'address_short', locals: {address: @order.addresses.shipping}
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('settings.billing')
+      = render partial: 'address_short', locals: {address: @order.addresses.billing}
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('confirm.shipments')
+      %p.general-address
+        = @order_presenter.delivery_name
+        %br
+        = @order_presenter.delivery_duration
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('confirm.payment_info')
+      %p.general-address
+        = @credit_card_presenter.secret_card_number
+        %br
+        = @order_presenter.credit_card_date
+  = render partial: 'list_of_items', locals: { order_items: @order_items }
+  = render partial: 'order_summary', locals: { order: @order }

@@ -1,0 +1,53 @@
+%main.container.general-main-wrap
+  %h1.mt-0.mb-25= t('order.my_orders')
+  %p.lead.small.mb-10.visible-xs= t('page.book.sort_by')
+  = render partial: 'dropdown', locals: { dropdown_presentet: @dropdown_presenter }
+  .visible-xs
+    - @orders.each do |order_presenter|
+      .general-cart-item.divider-lg-bottom.pt-0
+        %table.table
+          %tr
+            %td.col-half
+              %span.in-grey-600= t('order.number')
+            %td.col-half
+              = link_to account_order_path(order_presenter.object.id) do
+                %span.general-order-number= order_presenter.number
+          %tr
+            %td
+              %span.in-grey-600= t('order.complited_at')
+            %td
+              %span.ingrey-900.font-16.fw-300= order_presenter.creation_date
+          %tr
+            %td
+              %span.in-grey-600= t('order.statuss')
+            %td
+              %span.font-16.in-grey-900.fw-300= order_presenter.status
+          %tr
+            %td
+              %span.in-grey-600= t('order.total')
+            %td
+              %strong.font-16= currency_with_price order_presenter.object.total
+  .hidden-xs.mb-res-50
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('order.number')
+          %th
+            %span.in-grey-600= t('order.complited_at')
+          %th
+            %span.in-grey-600= t('order.statuss')
+          %th
+            %span.in-grey-600= t('order.total')
+      %tbody
+      - @orders.each do |order_presenter|
+        %tr
+          %td
+            = link_to account_order_path(order_presenter.object.id) do
+              %span.general-order-number= order_presenter.number 
+          %td
+            %span.in-grey-900.font-16.fw-300= order_presenter.creation_date
+          %td
+            %span.font-16.in-grey-900.fw-300= order_presenter.status
+          %td
+            %strong.font-16= currency_with_price order_presenter.object.total

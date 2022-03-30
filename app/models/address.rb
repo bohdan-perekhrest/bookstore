@@ -17,4 +17,13 @@ class Address < ApplicationRecord
   validates :zip, format: { with: /\A[0-9-]{0,10}\z/ }
   validates :first_name, :last_name, :country, :city, :address, length: { maximum: MAX_LENGTH }
   validates :zip, length: { maximum: ZIP_LENGTH }
+  validates :phone, phone: true
+
+  before_save :normalize_phone
+
+  private
+
+  def normalize_phone
+    self.phone = Phonelib.parse(phone).full_e164.presence
+  end
 end

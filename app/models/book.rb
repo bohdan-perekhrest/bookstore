@@ -16,6 +16,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :authors_books
   has_many :reviews, dependent: :delete_all
   has_many :order_items, dependent: :delete_all
+  has_many :orders
 
   validates :name, :description, :height, :width, :depth, :materials, :price, :published_at, presence: true
   validates :price, numericality: { minimum: MIN_PRICE }

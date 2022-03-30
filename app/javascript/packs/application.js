@@ -21,6 +21,19 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+$(document).ready(function () {
+  $('.nav-toggle').click(function () {
+    let collapse_content_selector = $(this).attr('href');
+    let toggle_switch = $(this);
+    $(collapse_content_selector).toggle(function () {
+      if($(this).css('display')=='none') {
+        toggle_switch.html('Read More');
+      } else {
+        toggle_switch.html('Read Less');
+      }
+    })
+  })
+})
 let load = () =>  {
     // Hide flash message
     window.setTimeout(function () {

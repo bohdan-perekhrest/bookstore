@@ -1,0 +1,10 @@
+%p.general-address
+  = full_name(address)
+  %br
+  = address.address
+  %br
+  = city_zip(address) 
+  %br
+  = country_name address
+  %br
+  = t('checkout.phone') + address.phone

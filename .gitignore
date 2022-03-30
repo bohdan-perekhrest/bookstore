@@ -21,4 +21,5 @@ yarn-debug.log*
 .idea
 public/uploads
 config/credentials.yml.enc
-
+.rspec
+coverage/

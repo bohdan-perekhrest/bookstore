@@ -18,6 +18,6 @@ class OrderItem < ApplicationRecord
   private
 
   def finilize
-    assing_attributes(total_price: total_price)
+    assign_attributes(total_price: total_price)
   end
 end

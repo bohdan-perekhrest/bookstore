@@ -34,8 +34,13 @@
           %li.dropdown
             = link_to t('button.shop'), books_path
           - if current_user
-            %li
-              = link_to t('button.my_account'), address_path
+            %li.dropdown
+              %a.nav-link.dropdown-toggle{href:'#', id:'navbarDropdown', role:'button', 'data-bs-toggle':'dropdown', 'aria-haspopup': 'true', 'aria-expanded':'false'}= t('button.my_account')
+              %ul.dropdown-menu{'aria-labelledby':'navbarDropdown'}
+                %li
+                  = link_to t('button.settings'), address_path
+                %li  
+                  = link_to t('button.my_orders'), account_order_index_path
             %li
               = link_to t('button.log_out'), destroy_user_session_path, method: :delete
           - else

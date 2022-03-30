@@ -13,7 +13,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    redirect_to order_index_path if @order_item.delete  && current_order.save
+    redirect_to order_index_path if @order_item.delete && current_order.save
   end
 
   private
@@ -22,4 +22,3 @@ class OrderItemsController < ApplicationController
     params.require(:order_item).permit(:book_id, :quantity)
   end
 end
-

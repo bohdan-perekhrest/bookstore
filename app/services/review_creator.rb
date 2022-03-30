@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReviewCreator < ApplicationService
+
   def initialize(params, user_id)
     @params = params
     @user_id = user_id

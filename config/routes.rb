@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
 
+  scope '/account' do
+    resources :order, only: %i[index show], controller: 'users/account/orders', as: 'account_order'
+  end
+
   scope '/settings' do
     get 'privacy', to: 'users/settings/privacy#index'
     patch 'privacy', to: 'users/settings/privacy#update'

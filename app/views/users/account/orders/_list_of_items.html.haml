@@ -1,0 +1,54 @@
+.visible-xs
+  - order_items.each do |item_presenter|
+    .general-cart-item.divider-lg
+      .general-img-wrap-table
+        = link_to book_path(item_presenter.object) do
+          = image_tag item_presenter.object.image_url, alt: 'design-book', class: 'cart-img-shadow'
+      %p.title= item_presenter.object.name
+      %P.in-grey-600.fw-300= item_presenter.short_description
+      %table.table
+        %tr
+          %td
+            %span.in-grey-600= t('cart.price')
+          %td
+            %span.font-16.in-gold-500= currency_with_price item_presenter.object.price
+        %tr
+          %td.vertical-middle
+            %span.in-grey-600= t('cart.quantity')
+          %td
+            %span= item_presenter.object.quantity
+        %tr
+          %td
+            %span.in-grey-600= t('order.total')
+          %td
+            %span.font-16.in-gold-500= currency_with_price item_presenter.object.total_price
+.hidden-xs.divider-lg.pt-20
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+          %span.in-grey-600= t('complete.book')
+        %th.col-method
+        %t
+          %span.in-grey-600= t('cart.price')
+        %th
+          %span.in-grey-600= t('cart.quantity')
+        %th
+          %span.in-grey-600= t('order.total')
+    %tbody
+      - order_items.each do |item_presenter|
+        %tr
+          %td
+            .general-img-wrap-table
+              = link_to book_path(item_presenter.object) do
+                = image_tag item_presenter.object.image_url, alt: 'design-book', class: 'cart-img-shadow pull-left'
+          %td
+            = link_to book_path(item_presenter.object), class: 'text-as-link' do
+              %p.title= item_presenter.object.name
+            %p.in-grey-600.fw-300= item_presenter.short_description 
+          %td
+            %span.font-16.in-gold-500= currency_with_price item_presenter.object.price
+          %td
+            %span.ml-30= item_presenter.object.quantity
+          %td
+            %span.font-16.in-gold-500= currency_with_price item_presenter.object.total_price

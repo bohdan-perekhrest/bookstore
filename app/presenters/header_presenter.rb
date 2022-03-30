@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class HeaderPresenter < BasePresenter
-
   attr_reader :order_id
 
   def initialize(order_id)
