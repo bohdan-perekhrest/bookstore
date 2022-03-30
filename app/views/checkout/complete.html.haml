@@ -12,7 +12,7 @@
     .col-sm-6.hidden-xs.text-right
       %p.general-order-number.mb-0= @order_presenter.sharp_number
       %p.general-address.mb-30= @order_presenter.creation_date
-  = render partial: 'list_of_items', locals: {current_order: @order}
+  = render partial: 'list_of_items', locals: {order_items: @order_items}
   .mb-55
     = render partial: 'order_summary', locals: {current_order: @order}
   .text-center

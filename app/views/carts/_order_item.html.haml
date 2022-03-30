@@ -1,23 +1,22 @@
-- presenter = BookPresenter.new(item.book)
 %tr
   %td
     .general-img-wrap-table
-      = link_to book_path(item.book.id) do
-        %img.cart-img-shadow.pull-left{src: item.book.image_url, alt: "design-book"}
+      = link_to book_path(item_presenter.book.id) do
+        %img.cart-img-shadow.pull-left{src: item_presenter.book.image_url, alt: "design-book"}
   %td
-    = link_to book_path(item.book.id), class: 'text-as-link' do
-      %p.title= item.book.name
+    = link_to book_path(item_presenter.book.id), class: 'text-as-link' do
+      %p.title= item_presenter.book.name
   %td
-    %span.font-16.in-gold-500= currency_with_price item.book.price
+    %span.font-16.in-gold-500= currency_with_price item_presenter.book.price
   %td
     .input-group
-      = link_to order_item_path(id: item.id, order_item: {quantity: item.quantity-1}), class: 'input-link', id: "order_#{item.id}_minus", method: :put, remote: true do
+      = link_to order_item_path(id: item_presenter.order_item.id, order_item: {quantity: item_presenter.order_item.quantity-1}), class: 'input-link', id: "order_#{item_presenter.order_item.id}_minus", method: :put, remote: true do
         %i.fa.fa-minus.line-height-40
       %input.form-control.quantity-input{type: 'text', value: item.quantity, readonly: true}
-      = link_to order_item_path(id: item.id, order_item: {quantity: item.quantity+1}), class: 'input-link', id: "order_#{item.id}_plus", method: :put, remote: true  do
+      = link_to order_item_path(id: item_presenter.order_item.id, order_item: {quantity: item_presenter.order_item.quantity+1}), class: 'input-link', id: "order_#{item_presenter.order_item.id}_plus", method: :put, remote: true  do
         %i.fa.fa-plus.line-height-40
   %td
-    %span.font-16.in-gold-500= currency_with_price item.total_price
+    %span.font-16.in-gold-500= currency_with_price item_presenter.order_item.total_price
   %td
-    = link_to order_item_path(order_id: session[:order_id], id: item.id), method: :delete, class: 'close general-cart-close', 'aria-label': 'Close'  do
+    = link_to order_item_path(order_id: session[:order_id], id: item_presenter.order_item.id), method: :delete, class: 'close general-cart-close', 'aria-label': 'Close'  do
       %span{'aria-hidden': "true"} &times;

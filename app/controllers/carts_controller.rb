@@ -5,7 +5,7 @@ class CartsController < ApplicationController
   before_action :set_coupon, only: %i[update]
 
   def index
-    @order_items = @order.order_items
+    @order_items = @order.order_items.map { |order_item| BookPresenter.new(order_item.book, order_item) }
   end
 
   def update

@@ -16,8 +16,8 @@
         %th.col-total
           %span.in-grey-600= t('cart.subtotal')
         %th.col-close
-      - @order_items.each do |item|
-        = render partial: 'order_item', locals: {item: item}
+      - @order_items.each do |item_presenter|
+        = render partial: 'order_item', locals: {item_presenter: item_presenter}
   .general-order-wrap
     .row
       .col-sm-4

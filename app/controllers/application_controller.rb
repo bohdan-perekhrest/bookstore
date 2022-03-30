@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include CurrentSession
-  before_action :set_order_id
+  before_action :set_order_id, :set_header_presenter
 
   private
 
@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
     session[:order_id] ||= Order.create.id
     order = Order.find_by(id: session[:order_id])
     order.user = current_user if order.user_id.nil?
+  end
+
+  def set_header_presenter
+    @header_presenter = HeaderPresenter.new(session[:order_id])
   end
 end

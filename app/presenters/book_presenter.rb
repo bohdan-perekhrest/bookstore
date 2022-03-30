@@ -4,11 +4,13 @@ class BookPresenter < BasePresenter
   include ApplicationHelper
 
   DESCRIPTION_LENGTH = 250
+  SHORT_DESCRIPTION_LENGTH = 75
 
-  attr_reader :book
+  attr_reader :book, :order_item_id
 
-  def initialize(book)
+  def initialize(book, order_item = nil)
     @book = book
+    @order_item = order_item
   end
 
   def authors_full_names
@@ -25,5 +27,9 @@ class BookPresenter < BasePresenter
     else
       markdown(book.description)
     end
+  end
+
+  def short_description
+    book.description.truncate(SHORT_DESCRIPTION_LENGTH)
   end
 end
