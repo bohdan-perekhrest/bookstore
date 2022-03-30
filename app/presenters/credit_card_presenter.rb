@@ -10,6 +10,6 @@ class CreditCardPresenter < BasePresenter
   end
 
   def secret_card_number
-    '**** **** **** ' + credit_card.number.last(NUMBER_OF_LAST_NUMBERS) 
+    "**** **** **** #{credit_card.number.last(NUMBER_OF_LAST_NUMBERS)}"
   end
 end

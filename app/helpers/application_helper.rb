@@ -60,16 +60,4 @@ module ApplicationHelper
   def active_step(current_step)
     'active' if current_step == step
   end
-
-  def full_name(object)
-    "#{object.first_name} #{object.last_name}"
-  end
-
-  def city_zip(object)
-    "#{object.city} #{object.zip}"
-  end
-
-  def currency_with_price(price = 0.00)
-    "€#{price}"
-  end
 end

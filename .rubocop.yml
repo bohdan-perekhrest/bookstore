@@ -5,6 +5,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
 AllCops:
+  TargetRubyVersion: 3.X
   Exclude:
     - db/**/*
     - script/**/*
@@ -26,6 +27,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - app/helpers/*
+    - app/models/ability.rb
 
 Style/Documentation:
   Enabled: false

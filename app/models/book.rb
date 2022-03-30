@@ -22,7 +22,8 @@ class Book < ApplicationRecord
   validates :price, numericality: { minimum: MIN_PRICE }
   validates :height, :width, :depth, numericality: { only_float: true }
   validates :small_images, length: { is: 3, allow_blank: true, message: t('validation.small_images') }
-  validates :published_at, numericality: { greater_than_or_equal_to: MIN_PUBLISHED_AT_YEAR, less_than_or_equal_to: Time.zone.now.year }
+  validates :published_at,
+            numericality: { greater_than_or_equal_to: MIN_PUBLISHED_AT_YEAR, less_than_or_equal_to: Time.zone.now.year }
   validates :name, length: { maximum: NAME_LENGTH }
   validates :materials, length: { maximum: MATERIALS_LENGTH }
   validates :description, length: { in: DESCRIPTION_LENGTH }
@@ -31,6 +32,6 @@ class Book < ApplicationRecord
 
   def self.best_sellers(count = COUNT_BEST_SELLERS)
     all.group_by { |book| book.order_items.map(&:quantity).sum }
-    .max_by(count) { |key, _value| key }.transpose[1].flatten.limit(count)
+       .max_by(count) { |key, _value| key }.transpose[1].flatten.limit(count)
   end
 end

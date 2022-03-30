@@ -1,5 +1,4 @@
 class BooksSetPresenter
-
   SLICE_NUMBER = 4
 
   def initialise(books)
