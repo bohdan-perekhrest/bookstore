@@ -6,10 +6,10 @@ require:
   - rubocop-rspec
 AllCops:
   Exclude:
-    - 'db/**/*'
-    - 'script/**/*'
-    - 'bin/**/*'
-    - 'config/initializer/*'
+    - db/**/*
+    - script/**/*
+    - bin/**/*
+    - config/**/*
 Metrics/LineLength:
   Max: 120
 
@@ -17,6 +17,12 @@ Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+    - app/admin/*
+    - app/controllers/concerns/*
+
+Metrics/MethodLength:
+  Exclude:
+    - app/helpers/*
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
@@ -27,4 +33,17 @@ Style/Documentation:
 
 Layout/LineLength:
   Exclude:
-    - 'config/initializer/*'
+    - config/initializer/*
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - app/helpers/*
+
+Lint/MissingSuper:
+  Enabled: false

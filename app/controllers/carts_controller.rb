@@ -15,7 +15,7 @@ class CartsController < ApplicationController
 
   private
 
-  def set_coupon
+  def coupon
     @coupon ||= Coupon.find_by(code: params[:code])
   end
 end

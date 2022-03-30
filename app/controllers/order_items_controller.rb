@@ -22,4 +22,3 @@ class OrderItemsController < ApplicationController
     params.require(:order_item).permit(:book_id, :quantity)
   end
 end
-
