@@ -30,7 +30,7 @@ class BooksQuery
   end
 
   def popular
-    relation.left_outer_joins(orders: [:order_items])
+    relation.left_outer_joins(:order_items)
             .includes(:authors)
             .group(:id)
             .order('SUM(order_items.quantity)')
