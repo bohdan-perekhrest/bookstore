@@ -15,6 +15,15 @@ caches:
 commands:
   defaults:
     steps:
+      - run:
+        name: Install local dependencies
+        command: npm install
+      - run:
+        name: Wait for Postgres to start
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+        name: Create database
+        command: npm run db:reset:test
       - checkout
       - restore_cache:
           keys:
