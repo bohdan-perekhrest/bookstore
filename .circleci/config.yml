@@ -7,12 +7,11 @@ executors:
     docker:
       - image: circleci/ruby:3.0.1
       - image: postgres:14.2
-      environment:
-        POSTGRES_USER: circleci
-        POSTGRES_PASSWORD: ""
-        POSTGRES_HOST_AUTH_METHOD: trust
-        TZ: "Etc/UTC"
         environment:
+          POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
+          TZ: "Etc/UTC"
           RAILS_ENV: test
 caches:
   - &bundle_cache_v1 v2_repo-{( checksum "Gemfile.lock" )}
