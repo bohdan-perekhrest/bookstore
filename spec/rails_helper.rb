@@ -52,19 +52,11 @@ end
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = false
-  # https://relishapp.com/rspec/rspec-rails/docs
-  # Warden.test_mode!
-  # config.after { Warden.test_reset! }
+
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include DeviseRequestSpecHelpers, type: :feature
-  config.include FormHelpers, type: :feature
-  config.include Features::SessionHelpers, type: :feature
-  config.include InjectSession, type: :feature
-  config.include WaitForAjax, type: :feature
-  config.include RedirectBack
-  config.include Selectors
 end

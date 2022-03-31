@@ -13,10 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'capybara/rspec'
 require 'factory_bot_rails'
-Capybara.javascript_driver = :webkit
-Capybara.default_max_wait_time = 5
 
 
 RSpec.configure do |config|
