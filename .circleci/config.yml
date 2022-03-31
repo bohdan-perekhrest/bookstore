@@ -33,6 +33,7 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
+      - run: sudo apt install -y postgresql-client || true
       - run:
           name: Database setup
           command: |
