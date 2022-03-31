@@ -1,15 +1,13 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
-  let!(:books) { FactoryBot.create_list(:book, 7) }
+  let(:books) { FactoryBot.create_list(:book, 7) }
 
   describe 'GET #index' do
     before { get :index }
 
     it 'assign @latest_books' do
-      expect(assigns(:latest_books)).to match_array(books.last(3))
+      expect(assigns(:latest_books)).to match_array(books.order('id DESC').limit(3).map {|book| BookPresenter.new(book)})
       expect(response).to render_template :index
     end
 

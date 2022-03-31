@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-   
 FactoryBot.define do
   factory :order do
     subtotal { 1 }
@@ -8,23 +6,16 @@ FactoryBot.define do
     delivery
     credit_card_id { nil }
 
-    trait :in_progress do
-      after(:create) do |order|
-        order.status = :in_progress
-        order.save!
-      end
-    end
-
     trait :delivered do
       after(:create) do |order|
-        order.status = :delivered
+        order.delivered!
         order.save!
       end
     end
 
     trait :in_queue do
       after(:create) do |order|
-        order.status = :in_queue
+        order.in_queue!
         order.save!
       end
     end

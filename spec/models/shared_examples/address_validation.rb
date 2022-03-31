@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 shared_examples_for 'address_validations' do
   it { expect(subject).to validate_presence_of :first_name }
   it { expect(subject).to validate_presence_of :last_name }

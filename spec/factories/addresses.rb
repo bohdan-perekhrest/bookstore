@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   ADDRESSES_TYPE = %w[Billing Shipping]
 

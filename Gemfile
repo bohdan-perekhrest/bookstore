@@ -50,7 +50,6 @@ group :development, :test do
   gem 'fasterer', '~> 0.9.0'
   gem 'simplecov', '~> 0.21.2'
   gem 'shoulda-matchers', '~> 5.1'
-  gem 'pundit-matchers', '~> 1.7.0'
 end
 
 group :development do

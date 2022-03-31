@@ -35,7 +35,7 @@ module Showable
     def show_complete
       return jump_to(:addresses) unless session[:complete_order]
 
-      @order = current_user.orders.proccesing_order.decorate
+      @order = current_user.orders.proccesing_order
       @order_presenter = OrderPresenter.new(@order)
       @order_items = @order.order_items.map { |order_item| BookPresenter.new(order_item.book, order_item) }
       session[:complete_order] = nil

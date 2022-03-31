@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe CreditCard, type: :model do
@@ -17,7 +15,6 @@ RSpec.describe CreditCard, type: :model do
       it { expect(subject).not_to allow_value('21/17').for(:mm_yy) }
       it { expect(subject).not_to allow_value('1f/ac').for(:mm_yy) }
       it { expect(subject).to allow_value('1234567891234571').for(:number) }
-      it { expect(subject).to allow_value('9996667776661112').for(:number) }
       it { expect(subject).not_to allow_value('123456').for(:number) }
       it { expect(subject).not_to allow_value('fffffffffffffff').for(:number) }
       it { expect(subject).to allow_value('Adam').for(:name) }

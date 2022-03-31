@@ -5,7 +5,7 @@ class OrderItemsController < ApplicationController
 
   def create
     @order_item = current_order.order_items.find_or_initialize_by(book_id: order_item_params[:book_id])
-    @order_item.update(quantity: @order_item.quantity + 1)
+    @order_item.update(quantity: quantity + order_item_params[:quantity].to_i)
     redirect_to order_index_path if @order_item.save && current_order.save
   end
 
@@ -18,6 +18,10 @@ class OrderItemsController < ApplicationController
   end
 
   private
+
+  def quantity
+    @order_item.quantity || 0
+  end
 
   def order_item_params
     params.require(:order_item).permit(:book_id, :quantity)

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe Users::Settings::PrivacyController, type: :controller do
@@ -41,7 +39,7 @@ RSpec.describe Users::Settings::PrivacyController, type: :controller do
       end
 
       it 'show error message' do
-        expect(flash[:alert]).to eq 'Email is invalid'
+        expect(flash[:alert]).to eq I18n.t('user.not_updated')
       end
     end
   end
@@ -86,7 +84,7 @@ RSpec.describe Users::Settings::PrivacyController, type: :controller do
       end
 
       it 'show error message' do
-        expect(flash[:alert]).to eq 'Password is invalid'
+        expect(flash[:alert]).to eq I18n.t('user.not_updated')
       end
     end
   end
