@@ -30,6 +30,9 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
+  create_db:
+    steps:
+      - run: rails db:reset:test
   run_linters:
     description: command to start linters
     steps:
