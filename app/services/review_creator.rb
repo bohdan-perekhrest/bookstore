@@ -13,6 +13,6 @@ class ReviewCreator < ApplicationService
     Review.new(params) do |review|
       review.user_id = user_id
       review.book_id = book_id
-    end.save
+    end
   end
 end
