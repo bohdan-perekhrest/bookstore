@@ -16,7 +16,7 @@ REQUIRED_DIRS = %w[
 ]
 
 REQUIRED_DIRS.each do |path|
-  Dir[Rails.root.join("spec/#{path}/**/*.rb")].each { |f| require f }
+  Dir[Rails.root.join("spec/#{path}/*.rb")].each { |f| require f }
 end
 
 Shoulda::Matchers.configure do |config|
