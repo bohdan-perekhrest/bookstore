@@ -38,8 +38,7 @@ commands:
     steps:
       - run:
           name: run specs
-          command: |
-            bundle exec rspec --format progress
+          command: bundle exec rspec --format progress
 jobs:
   lintering:
     executor: default
