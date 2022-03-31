@@ -13,7 +13,9 @@ executors:
       - image: postgres:14.0
         environment:
           POSTGRES_USER: root
+          POSTGRES_PASSWORD: ""
           POSTGRES_DB: circle-test_test
+          POSTGRES_HOST_AUTH_METHOD: trust
 caches:
   - &bundle_cache_v1 v2_repo-{( checksum "Gemfile.lock" )}
   - &bundle_cache v2_repo-
