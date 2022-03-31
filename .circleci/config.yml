@@ -37,8 +37,8 @@ commands:
       - run:
           name: Database setup
           command: |
-            bundle exec rails db:create
-            bundle exec rails db:structure:load
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
   run_linters:
     description: command to start linters
     steps:
