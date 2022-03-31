@@ -18,9 +18,13 @@ caches:
   - &bundle_cache v2_repo-
 
 commands:
+  create_db:
+    steps:
+      - run: rails db:reset:test
   defaults:
     steps:
       - checkout
+      - create_db
       - restore_cache:
           keys:
             - *bundle_cache_v1
@@ -30,9 +34,6 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
-  create_db:
-    steps:
-      - run: rails db:reset:test
   run_linters:
     description: command to start linters
     steps:
