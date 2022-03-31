@@ -11,7 +11,7 @@ RSpec.describe ReviewsController, type: :controller do
 
     it 'sends error flash' do
       post :create, params: { book_id: book_id, review: review_params }
-      expect(flash[:alert]).to eq I18n.t('review.smth_went_wrong')
+      expect(flash[:notice]).to eq I18n.t('review.smth_went_wrong')
     end
   end
 

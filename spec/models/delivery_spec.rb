@@ -5,8 +5,5 @@ RSpec.describe Delivery, type: :model do
   it { expect(subject).to validate_presence_of :price }
   it { expect(subject).to validate_presence_of :duration }
   it { expect(subject).to have_many :orders }
-  it {
-      expect(subject).to validate_length_of(:name)
-        .is_at_least(3).is_at_most(100)
-    }
+  it { expect(subject).to validate_length_of(:name).is_at_least(3).is_at_most(100) }
 end
