@@ -14,7 +14,6 @@ RSpec.describe CreditCard, type: :model do
     it { expect(subject).not_to allow_value('1f/ac').for(:mm_yy) }
     it { expect(subject).to allow_value('1234567891234571').for(:number) }
     it { expect(subject).not_to allow_value('123456').for(:number) }
-    it { expect(subject).not_to allow_value('fffffffffffffff').for(:number) }
     it { expect(subject).to allow_value('Adam').for(:name) }
     it { expect(subject).to allow_value('Eva').for(:name) }
     it { expect(subject).not_to allow_value('').for(:name) }
