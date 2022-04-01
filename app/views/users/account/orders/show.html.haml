@@ -1,12 +1,12 @@
 %main.container.general-main-wrap
-  %h1.general-title-margin= "Order #{@order_presenter.number}"
+  %h1.general-title-margin= "Order #{@order_presenter.sharp_number}"
   .row.mb-20
     .col-sm-3
       %h3.general-subtitle.mt-0= t('settings.shipping')
-      = render partial: 'address_short', locals: {address: @order.addresses.shipping}
+      = render partial: 'address_short', locals: {address: @order.addresses.find_by(type: @order.addresses.types['Shipping'])}
     .col-sm-3
       %h3.general-subtitle.mt-0= t('settings.billing')
-      = render partial: 'address_short', locals: {address: @order.addresses.billing}
+      = render partial: 'address_short', locals: {address: @order.addresses.find_by(type: @order.addresses.types['Billing'])}
     .col-sm-3
       %h3.general-subtitle.mt-0= t('confirm.shipments')
       %p.general-address

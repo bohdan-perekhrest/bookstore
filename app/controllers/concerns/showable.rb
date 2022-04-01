@@ -15,7 +15,7 @@ module Showable
     end
 
     def show_delivery
-      return jump_to(previous_step) unless current_order.addresses.presence
+      return jump_to(previous_step) unless current_order.addresses.present?
 
       @deliveries = Delivery.all
     end
@@ -29,13 +29,14 @@ module Showable
     def show_confirm
       return jump_to(previous_step) unless current_order.credit_card
 
+      @order_items = current_order.order_items.map { |order_item| BookPresenter.new(order_item.book, order_item) }
       show_addresses
     end
 
     def show_complete
       return jump_to(:addresses) unless session[:complete_order]
 
-      @order = current_user.orders.proccesing_order
+      @order = current_user.orders.in_queue.order('id DESC').first
       @order_presenter = OrderPresenter.new(@order)
       @order_items = @order.order_items.map { |order_item| BookPresenter.new(order_item.book, order_item) }
       session[:complete_order] = nil

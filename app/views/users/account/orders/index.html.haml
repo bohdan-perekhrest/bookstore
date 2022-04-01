@@ -10,8 +10,8 @@
             %td.col-half
               %span.in-grey-600= t('order.number')
             %td.col-half
-              = link_to account_order_path(order_presenter.object.id) do
-                %span.general-order-number= order_presenter.number
+              = link_to account_order_path(order_presenter.order.id) do
+                %span.general-order-number= order_presenter.sharp_number
           %tr
             %td
               %span.in-grey-600= t('order.complited_at')
@@ -26,7 +26,7 @@
             %td
               %span.in-grey-600= t('order.total')
             %td
-              %strong.font-16= currency_with_price order_presenter.object.total
+              %strong.font-16= currency_with_price order_presenter.order.total
   .hidden-xs.mb-res-50
     %table.table.table-hover
       %thead
@@ -43,11 +43,11 @@
       - @orders.each do |order_presenter|
         %tr
           %td
-            = link_to account_order_path(order_presenter.object.id) do
-              %span.general-order-number= order_presenter.number 
+            = link_to account_order_path(order_presenter.order.id) do
+              %span.general-order-number= order_presenter.sharp_number 
           %td
             %span.in-grey-900.font-16.fw-300= order_presenter.creation_date
           %td
             %span.font-16.in-grey-900.fw-300= order_presenter.status
           %td
-            %strong.font-16= currency_with_price order_presenter.object.total
+            %strong.font-16= currency_with_price order_presenter.order.total

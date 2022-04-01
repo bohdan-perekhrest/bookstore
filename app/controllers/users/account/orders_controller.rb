@@ -14,7 +14,7 @@ module Users
       def show
         @order_presenter = OrderPresenter.new(@order)
         @credit_card_presenter = CreditCardPresenter.new(@order.credit_card)
-        @order_items = @order.order_items.map { |order_item| BookPresenter.new(order_item.book) }
+        @order_items = @order.order_items.map { |order_item| BookPresenter.new(order_item.book, order_item) }
       end
     end
   end

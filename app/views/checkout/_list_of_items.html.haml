@@ -3,7 +3,7 @@
     .general-cart-item.divider-lg
       .general-img-wrap-table
         = link_to book_path(item_presenter.book) do
-          = image_tag item_presenter.book.image_url, alt: 'design-book', class: 'cart-img-shadow'
+          = image_tag item_presenter.book.image, alt: 'design-book', class: 'cart-img-shadow'
       %p.title= item_presenter.book.name
       %P.in-grey-600.fw-300= item_presenter.short_description
       %table.table
@@ -16,12 +16,12 @@
           %td.vertical-middle
             %span.in-grey-600= t('cart.quantity')
           %td
-            %span= item_presenter.quantity
+            %span= item_presenter.order_item.quantity
         %tr
           %td
             %span.in-grey-600= t('order.total')
           %td
-            %span.font-16.in-gold-500= currency_with_price item_presenter.total_price
+            %span.font-16.in-gold-500= currency_with_price item_presenter.order_item.total_price
 .hidden-xs.divider-lg.pt-20
   %table.table.table-hover
     %thead
@@ -41,7 +41,7 @@
           %td
             .general-img-wrap-table
               = link_to book_path(item_presenter.book) do
-                = image_tag item_presenter.book.image_url, alt: 'design-book', class: 'cart-img-shadow pull-left'
+                = image_tag item_presenter.book.image, alt: 'design-book', class: 'cart-img-shadow pull-left'
           %td
             = link_to book_path(item_presenter.book), class: 'text-as-link' do
               %p.title= item_presenter.book.name
@@ -49,6 +49,6 @@
           %td
             %span.font-16.in-gold-500= currency_with_price item_presenter.book.price
           %td
-            %span.ml-30= item_presenter.quantity
+            %span.ml-30= item_presenter.order_item.quantity
           %td
-            %span.font-16.in-gold-500= currency_with_price item_presenter.total_price
+            %span.font-16.in-gold-500= currency_with_price item_presenter.order_item.total_price
