@@ -15,7 +15,7 @@ module Showable
     end
 
     def show_delivery
-      return jump_to(previous_step) unless current_order.addresses.present?
+      return jump_to(previous_step) unless current_order.addresses.blank?
 
       @deliveries = Delivery.all
     end

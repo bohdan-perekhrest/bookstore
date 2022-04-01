@@ -17,6 +17,10 @@ AllCops:
 Metrics/LineLength:
   Max: 120
 
+Rails/Present:
+  Exclude:
+    - app/controllers/concerns/showable.rb
+
 Metrics/BlockLength:
   Exclude:
     - config/**/*

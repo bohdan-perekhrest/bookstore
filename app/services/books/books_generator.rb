@@ -8,7 +8,7 @@ module Books
     end
 
     def call
-      pagy(@books, page: page)
+      generate_books
     end
 
     private
@@ -18,6 +18,7 @@ module Books
     def generate_books
       by_category if category_id
       by_filter if filter
+      pagy(@books, page: page)
     end
 
     def by_category
