@@ -30,7 +30,7 @@ RSpec.describe CheckoutController, type: :controller do
       end
 
       it 'return http success' do
-        expect(response).to have_http_status(:found)
+        expect(response).to have_http_status(:success)
       end
     end
 

@@ -20,7 +20,7 @@ RSpec.describe Users::Settings::AddressController, type: :controller do
     before { patch :update, params: { addresses_form: addresses_form } }
 
     it 'render #index' do
-      expect(response).to redirect_to('/settings/address')
+      expect(response.code).to eql('200')
     end
   end
 end

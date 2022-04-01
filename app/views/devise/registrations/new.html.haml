@@ -4,20 +4,20 @@
     = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
       %i.fa.fa-facebook-official
     %p.general-login-text= t('button.or')
-  = simple_form_for(resource, as: resource_name, url: user_registration_path,  html: { class: 'general-form'}) do |f|
-    - errors = resource.errors.full_messages
-    .form-group.mb-30{ class: "#{resource.errors[:email].empty? ? '' : 'has-error'}"}
+  = simple_form_for(user, as: user_name, url: user_registration_path,  html: { class: 'general-form'}) do |f|
+    - errors = user.errors.full_messages
+    .form-group.mb-30{ class: "#{user.errors[:email].empty? ? '' : 'has-error'}"}
       = f.label :email, class: 'control-label input-label', require: 'true'
       = f.email_field :email, placeholder: t('settings.enter_e_mail'), class: 'form-control', id:'email'
-      %span.help-block= resource.errors[:email].to_sentence
-    .form-group.mb-30{ class: "#{resource.errors[:password].empty? ? '' : 'has-error'}"}
+      %span.help-block= user.errors[:email].to_sentence
+    .form-group.mb-30{ class: "#{user.errors[:password].empty? ? '' : 'has-error'}"}
       = f.label :password, class: 'control-label input-label'
       = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter_passwd')
-      %span.help-block= resource.errors[:password].to_sentence
-    .form-group.mb-30{ class: "#{resource.errors[:password_confirmation].empty? ? '' : 'has-error'}"}
+      %span.help-block= user.errors[:password].to_sentence
+    .form-group.mb-30{ class: "#{user.errors[:password_confirmation].empty? ? '' : 'has-error'}"}
       = f.label :password_confirmation, class: 'control-label input-label'
       = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: t('settings.confirm_password')
-      %span.help-block= resource.errors[:password_confirmation].to_sentence
+      %span.help-block= user.errors[:password_confirmation].to_sentence
     .text-center
       = f.submit t('button.back_to_store'), class: 'btn btn-default mb-20'
   %p.general-sign-text.text-center

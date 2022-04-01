@@ -2,12 +2,12 @@
 
 module ApplicationHelper
   include Pagy::Frontend
-  def resource_name
+  def user_name
     :user
   end
 
-  def resource
-    @user||= User.new
+  def user
+    @user ||= User.new
   end
 
   def devise_mapping

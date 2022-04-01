@@ -177,8 +177,8 @@ en:
       flccf_format: 'Must containts only letters'
       address: 'Must containts letters, digits and spaces'
       zip: 'Must containts only digits'
-      flccf_length: 'Maximum length is 50 symbols'
-      zip_length: 'Maximum length is 10 digits'
+      flccf_length: 'is too long (maximum is 50 characters)'
+      zip_length: 'is too long (maximum is 10 characters)'
   mailer:
     email: 'Your email:'
     password: 'Your password:'
