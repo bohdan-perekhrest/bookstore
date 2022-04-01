@@ -2,9 +2,10 @@
 
 module Users
   class RegistrationController < Devise::RegistrationsController
+    include ApplicationHelper
+
     def create
       super
-      flash[:alert] = I18n.t('user.not_sign')
       UserMailer.welcome_email(*sending_params).deliver_later
     end
 
