@@ -35,7 +35,7 @@ module Updateable
     end
 
     def addresses_params
-      params.require(:checkout_addresses_form)
+      params.require(:addresses_form)
     end
   end
 end
