@@ -29,16 +29,8 @@ RSpec.describe CheckoutController, type: :controller do
         get :show, params: { id: :delivery }
       end
 
-      it 'render delivery view' do
-        expect(response).to render_template :delivery
-      end
-
-      it 'assign @deliveries' do
-        expect(assigns(:deliveries)).not_to be_nil
-      end
-
       it 'return http success' do
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:found)
       end
     end
 

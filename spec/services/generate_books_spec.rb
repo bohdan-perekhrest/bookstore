@@ -21,7 +21,7 @@ RSpec.describe Books::BooksGenerator do
     it 'should return pagy and books by filter sorted' do
       pagy, books = Books::BooksGenerator.new(params, books: Book.all).call
       expect(books[0].price).to be >= books[0].price
-      expect(books.size).to eq(12)
+      expect(books.size).to eq(8)
     end
   end
 end
