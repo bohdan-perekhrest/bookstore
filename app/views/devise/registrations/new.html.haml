@@ -7,10 +7,10 @@
   = simple_form_for(:user, url: user_registration_path,  html: { class: 'general-form'}) do |f|
     .form-group.mb-30
       = f.label :email, class: 'control-label input-label', require: 'true'
-      = f.email_field :email, placeholder: t('settings.enter_e-mail'), class: 'form-control', id:'email'
+      = f.email_field :email, placeholder: t('settings.enter_e_mail'), class: 'form-control', id:'email'
     .form-group.mb-30
       = f.label :password, class: 'control-label input-label'
-      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter-passwd')
+      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter_passwd')
     .form-group.mb-30
       = f.label :password_confirmation, class: 'control-label input-label'
       = f.password_field :password_confirmation, class: 'form-control', id: 'confirm', placeholder: t('settings.confirm_password')
