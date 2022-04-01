@@ -173,6 +173,12 @@ en:
     card_name: 'Allow only letters'
     mm_yy: 'Mons can be from 01 to 12'
     small_images: 'Wrong input, should be 3 photos'
+    address:
+      flccf_format: 'Must containts only letters'
+      address: 'Must containts letters, digits and spaces'
+      zip: 'Must containts only digits'
+      flccf_length: 'Maximum length is 50 symbols'
+      zip_length: 'Maximum length is 10 digits'
   mailer:
     email: 'Your email:'
     password: 'Your password:'

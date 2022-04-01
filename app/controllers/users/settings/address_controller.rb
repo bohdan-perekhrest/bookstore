@@ -11,11 +11,8 @@ module Users
 
       def update
         @addresses = AddressesForm.new(addresses_params)
-        if @addresses.persist!
-          redirect_to address_path, notice: I18n.t('user.updated')
-        else
-          redirect_to address_path, alert: I18n.t('user.not_updated')
-        end
+        @addresses.persist!
+        render :index
       end
 
       private

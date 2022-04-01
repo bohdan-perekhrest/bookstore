@@ -3,24 +3,24 @@
 class AddressesForm
   include ActiveModel::Model
 
-  attr_reader :params, :target, :use_billing
+  attr_reader :params, :target, :use_billing, :billing, :shipping
 
   def initialize(params = {})
     @params = params
     @target = User.find_by(id: user_id) || Order.find_by(id: order_id)
-    @billing = billing
-    @shipping = shipping
+    @billing = define_billing
+    @shipping = define_shipping
   end
 
   def errors
     { billing: @billing.errors, shipping: @shipping.errors }
   end
 
-  def billing
+  def define_billing
     target.addresses.find_or_initialize_by(type: Address.types['Billing'])
   end
 
-  def shipping
+  def define_shipping
     target.addresses.find_or_initialize_by(type: Address.types['Shipping'])
   end
 

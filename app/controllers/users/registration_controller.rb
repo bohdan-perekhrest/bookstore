@@ -6,6 +6,7 @@ module Users
 
     def create
       super
+      debugger
       UserMailer.welcome_email(*sending_params).deliver_later
     end
 
