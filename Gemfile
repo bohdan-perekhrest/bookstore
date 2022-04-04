@@ -26,6 +26,7 @@ gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'phonelib', '~> 0.6.57'
+gem 'rake', '~> 13.0', '>= 13.0.6'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 gem 'redcarpet', '~> 3.5', '>= 3.5.1'
 gem 'sassc-rails', '>= 2.1.0'
@@ -36,7 +37,7 @@ gem 'wicked', '~> 1.4'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem 'factory_bot_rails', '~> 6.2'
+  gem 'factory_bot_rails', '~> 6.0'
   gem 'rspec-rails', '~> 5.1'
   gem 'rubocop'
   gem 'rubocop-performance'
@@ -50,7 +51,6 @@ group :development, :test do
   gem 'fasterer', '~> 0.9.0'
   gem 'simplecov', '~> 0.21.2'
   gem 'shoulda-matchers', '~> 5.1'
-  gem 'pundit-matchers', '~> 1.7.0'
 end
 
 group :development do

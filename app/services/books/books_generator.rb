@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module BookService
+module Books
   class BooksGenerator < ApplicationService
     def initialize(params, books:)
       @params = params
@@ -8,7 +8,7 @@ module BookService
     end
 
     def call
-      pagy(@books, page: page)
+      generate_books
     end
 
     private
@@ -18,6 +18,7 @@ module BookService
     def generate_books
       by_category if category_id
       by_filter if filter
+      pagy(@books, page: page)
     end
 
     def by_category

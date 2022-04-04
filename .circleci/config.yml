@@ -8,6 +8,14 @@ executors:
       - image: circleci/ruby:3.0.1
         environment:
           RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: postgres:14.0
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: circle-test_test
+          POSTGRES_HOST_AUTH_METHOD: trust
 caches:
   - &bundle_cache_v1 v2_repo-{( checksum "Gemfile.lock" )}
   - &bundle_cache v2_repo-
@@ -20,23 +28,31 @@ commands:
           keys:
             - *bundle_cache_v1
             - *bundle_cache
-      - run: bundle install --path vendor/bundle
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
       - save_cache:
           key: *bundle_cache
           paths:
             - vendor/bundle
+      - run: sudo apt install -y postgresql-client || true
+      - run:
+          name: Database setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
   run_linters:
     description: command to start linters
     steps:
       - run:
           name: rubocop
           command: bundle exec rubocop
+      - run:
+          name: fasterer
+          command: bundle exec fasterer
   run_specs:
     steps:
       - run:
           name: run specs
-          command: |
-            bundle exec rspec --format progress
+          command: bundle exec rspec --format progress
 jobs:
   lintering:
     executor: default
@@ -53,6 +69,5 @@ workflows:
   build:
     jobs:
       - lintering
-#      - run_specs:
-#          requires:
-#            - lintering
+      - run_specs
+

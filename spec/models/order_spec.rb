@@ -3,13 +3,6 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   it { expect(subject).to have_many :order_items }
 
-  it 'set order status before create' do
-    subject.user_id = FactoryBot.create(:user).id
-    subject.status = :in_progress
-    expect(subject).to receive :order_status
-    subject.save!
-  end
-
   it 'update subtotal before save' do
     allow(subject).to receive(:order_items) { [FactoryBot.build(:order_item, :with_book)] }
     allow_any_instance_of(Book).to receive(:price).and_return 12.30

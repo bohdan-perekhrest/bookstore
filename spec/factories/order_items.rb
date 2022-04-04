@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 FactoryBot.define do
   factory :order_item do
     transient do
@@ -18,6 +16,7 @@ FactoryBot.define do
     trait :with_book do
       before(:create) do |item, evaluator|
         item.book = evaluator.book
+        item.save!
       end
     end
   end

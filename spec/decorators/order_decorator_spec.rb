@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe OrderDecorator do
@@ -19,7 +17,7 @@ RSpec.describe OrderDecorator do
   describe '#status' do
     it 'show right status' do
       order = FactoryBot.create(:order, status: :in_progress).decorate
-      expect(order.status).to eq I18n.t('order.status.in_progress')
+      expect(order.status).to eq 'in_progress'
     end
   end
 end

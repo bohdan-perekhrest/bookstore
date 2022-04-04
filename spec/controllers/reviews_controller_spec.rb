@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe ReviewsController, type: :controller do
-  let(:review_params) { FactoryBot.build(:review).attributes }
+  let(:review_params) { FactoryBot.attributes_for(:review) }
   let(:book_id) { FactoryBot.create(:book).id }
   login_user
   context 'with invalid save'do
@@ -13,7 +11,7 @@ RSpec.describe ReviewsController, type: :controller do
 
     it 'sends error flash' do
       post :create, params: { book_id: book_id, review: review_params }
-      expect(flash[:alert]).to eq I18n.t('review.smth_went_wrong')
+      expect(flash[:notice]).to eq I18n.t('review.smth_went_wrong')
     end
   end
 

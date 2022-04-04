@@ -5,13 +5,15 @@
       = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-logic-icon' do |f|
         %i.fa.fa-facebook-official
     %p.general-login-text= t('button.or')
-  = simple_form_for(:user, url: user_session_path, html: { class: 'general-form' }) do |f|
-    .form-group.mb-30
+  = simple_form_for(user, as: user_name, url: user_session_path, html: { class: 'general-form' }) do |f|
+    .form-group.mb-30{ class: "#{user.errors[:email].empty? ? '' : 'has-error'}"}
       = f.label :email, class: 'control-label input-label', required: true, autofocus: true
-      = f.email_field :email, placeholder: t('page.settings.enter_e-mail'), class: 'form-control', id:'email'
-    .form-group.mb-30
+      = f.email_field :email, placeholder: t('settings.enter_e_mail'), class: 'form-control', id:'email'
+      %span.help-block= user.errors[:email].to_sentence
+    .form-group.mb-30{ class: "#{user.errors[:email].empty? ? '' : 'has-error'}"}
       = f.label :password, class: 'control-label input-label'
-      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('page.settings.enter-passwd')
+      = f.password_field :password, class: 'form-control', id: 'password', placeholder: t('settings.enter_passwd')
+      %span.help-block= user.errors[:password].to_sentence
       = link_to t('button.forgot_password'), new_user_password_path, class: 'in-gold-500'
     .form-group.checkbox.text-center.mb-30
       %label.checkbox-label

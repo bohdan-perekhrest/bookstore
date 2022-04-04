@@ -2,6 +2,8 @@
 
 module Users
   class RegistrationController < Devise::RegistrationsController
+    include ApplicationHelper
+
     def create
       super
       UserMailer.welcome_email(*sending_params).deliver_later

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
@@ -12,10 +10,6 @@ RSpec.describe Book, type: :model do
     it { expect(subject).to validate_presence_of :width }
     it { expect(subject).to validate_presence_of :depth }
     it { expect(subject).to validate_presence_of :materials }
-    it {
-      expect(subject).to validate_numericality_of(:price)
-        .is_greater_than_or_equal_to 0.01
-    }
     it {
       expect(subject).to validate_numericality_of(:published_at)
         .is_greater_than_or_equal_to(1900)

@@ -7,8 +7,8 @@ module Updateable
     private
 
     def update_addresses
-      @addresses = CheckoutAddressesForm.new(addresses_params)
-      render_wizard unless @addresses.save
+      @addresses = AddressesForm.new(addresses_params)
+      render_wizard unless @addresses.persist!
     end
 
     def update_delivery
@@ -18,7 +18,7 @@ module Updateable
 
     def update_payment
       @credit_card = CreditCard.new(credit_card_params)
-      render_wizard unless @credit_card.save
+      render_wizard unless @credit_card.save && current_order.update(credit_card: @credit_card)
     end
 
     def update_confirm
@@ -27,7 +27,7 @@ module Updateable
     end
 
     def credit_card_params
-      params.require(:credit_card).merge(order: current_order).permit(:number, :name, :mm_yy, :cvv, :order)
+      params.require(:credit_card).permit(:number, :name, :mm_yy, :cvv)
     end
 
     def order_params
@@ -35,7 +35,7 @@ module Updateable
     end
 
     def addresses_params
-      params.require(:checkout_addresses_form)
+      params.require(:addresses_form)
     end
   end
 end

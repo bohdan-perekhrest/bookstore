@@ -25,7 +25,7 @@ RSpec.describe DropdownsPresenter do
     let(:filter) { :in_delivery }
     let(:dropdowns_presenter) { DropdownsPresenter.new(filter) }
     let(:dropdowns_presenter_empty) { DropdownsPresenter.new(nil) }
-    let(:result) { 'In Delivery' }
+    let(:result) { 'In delivery' }
     let(:result_empty) { 'All Orders' }
 
     it 'should return :popular for users' do

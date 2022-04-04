@@ -5,15 +5,21 @@ require:
   - rubocop-rails
   - rubocop-rspec
 AllCops:
+  TargetRubyVersion: 3.X
   Exclude:
     - db/**/*
     - script/**/*
     - bin/**/*
     - config/**/*
     - spec/**/*
+    - vendor/bundle/**/*
 
 Metrics/LineLength:
   Max: 120
+
+Rails/Present:
+  Exclude:
+    - app/controllers/concerns/showable.rb
 
 Metrics/BlockLength:
   Exclude:
@@ -25,6 +31,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - app/helpers/*
+    - app/models/ability.rb
 
 Style/Documentation:
   Enabled: false
@@ -45,3 +52,6 @@ Rails/OutputSafety:
 
 Lint/MissingSuper:
   Enabled: false
+Style/RedundantFetchBlock:
+  Exclude:
+    - app/forms/addresses_form.rb

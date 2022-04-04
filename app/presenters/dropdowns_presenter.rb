@@ -2,17 +2,17 @@
 
 class DropdownsPresenter < BasePresenter
   DROPDOWN = {
-    newest: t('button.newest_first'),
-    popular: t('button.popular_first'),
-    price_up: t('button.low_to_hight'),
-    price_down: t('button.hight_to_low'),
-    a_z: t('button.title_A-Z'),
-    z_a: t('button.title_A-Z'),
-    all: t('order.status.all'),
-    in_queue: t('order.status.in_queue'),
-    in_delivery: t('order.status.in_delivery'),
-    delivered: t('order.status.delivered'),
-    canceled: t('order.status.canceled')
+    newest: I18n.t('button.newest_first'),
+    popular: I18n.t('button.popular_first'),
+    price_up: I18n.t('button.low_to_hight'),
+    price_down: I18n.t('button.hight_to_low'),
+    a_z: I18n.t('button.title_A-Z'),
+    z_a: I18n.t('button.title_A-Z'),
+    all: I18n.t('order.status.all'),
+    in_queue: I18n.t('order.status.in_queue'),
+    in_delivery: I18n.t('order.status.in_delivery'),
+    delivered: I18n.t('order.status.delivered'),
+    canceled: I18n.t('order.status.canceled')
   }.freeze
 
   attr_reader :filter

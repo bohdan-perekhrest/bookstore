@@ -2,12 +2,12 @@
 
 module ApplicationHelper
   include Pagy::Frontend
-  def resource_name
+  def user_name
     :user
   end
 
-  def resource
-    @resource ||= User.new
+  def user
+    @user ||= User.new
   end
 
   def devise_mapping
@@ -30,6 +30,18 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
   end
 
+  def currency_with_price(price = 0.00)
+    "€#{price}"
+  end
+
+  def full_name(object)
+    "#{object.first_name} #{object.last_name}"
+  end
+
+  def city_zip(object)
+    "#{object.city} #{object.zip}"
+  end
+
   def bootstrap_class_for(flash_type)
     {
       success: 'alert-success',
@@ -47,17 +59,5 @@ module ApplicationHelper
 
   def active_step(current_step)
     'active' if current_step == step
-  end
-
-  def full_name(object)
-    "#{object.first_name} #{object.last_name}"
-  end
-
-  def city_zip(object)
-    "#{object.city} #{object.zip}"
-  end
-
-  def currency_with_price(price = 0.00)
-    "€#{price}"
   end
 end

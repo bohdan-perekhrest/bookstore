@@ -33,11 +33,9 @@ en:
     get_started: 'Get Started'
     post: 'Post'
     already_have_account: 'You already have account?'
-    dont_have_account: "Don’t have an Account?"
-
+    dont_have_account: 'Do not have an Account?'
   header:
     logo: 'Bookstore'
-
   page:
     home:
       carusel:
@@ -46,19 +44,18 @@ en:
       greeting: 'Welcome to our amazing Bookstore!'
       text: 'We pore through hundreds of new books each month and select the five best we can find to share with our members.'
       best_sellers: 'Best Sellers'
-
     book:
       show:
         description: 'Description'
         materials: 'Materials'
         dimension: 'Dimensions'
         published_at: 'Year of publication'
-
       index:
         by_category: 'Filter by category'
         sort_by: 'Sort by'
         catalog: 'Catalog'
   cart:
+    missing: 'There is no items in cart yet'
     cart: 'Cart'
     product: 'Product'
     price: 'Price'
@@ -79,7 +76,6 @@ en:
     thanks_message: 'Thanks for Review. It will be published as soon as Admin will approve it.'
     smth_went_wrong: 'Something went wrong.'
     score: 'Score'
-
   settings:
     settings: 'Settings'
     address: 'Address'
@@ -88,10 +84,10 @@ en:
     shipping: 'Shipping Address'
     use_billing: 'Use Billing Adress'
     save: 'Save'
-    e-mail: 'Email'
-    enter_e-mail: 'Enter Email'
-    enter-passwd: 'Enter Password'
-    enter_your_e-mail: 'Enter your email'
+    e_mail: 'Email'
+    enter_e_mail: 'Enter Email'
+    enter_passwd: 'Enter Password'
+    enter_your_e_mail: 'Enter your email'
     remember_me: 'Remember Me'
     password: 'Password'
     old_password: 'Old Password'
@@ -107,29 +103,30 @@ en:
     country: 'Country'
     country_select: 'Select a country'
   user:
+    not_sign: 'You input invalid data. Try Again'
     updated: 'Data was successfully updated'
     not_updated: 'Data was not updated'
     seccess_updating_email: 'E-mail was successfully updated.'
   order:
+    missing: 'There is no active orders yet'
     my_orders: 'My Orders'
     number: 'Number'
     complited_at: 'Completed at'
     statuss: 'Status'
     total: 'Total'
     status:
+      in_progress: 'In Progress'
       in_queue: 'Waiting for processing'
       in_delivery: 'In delivery'
       delivered: 'Delivered'
       canceled: 'Cenceled'
       all: 'All Orders'
-
   delivery:
     delivery_method: 'Shipping Method'
     method: 'Method'
     days: 'Days'
     price: 'Price'
     pickup: 'Please, pick up Delivery type!'
-
   credit_card:
     tooltip: '3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front'
   confirm:
@@ -148,14 +145,12 @@ en:
     has_been_sent_to: 'An order confirmation has been sent to '
     book: 'Book'
   date:
-   month_names: [nil, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
+    month_names: [nil, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   flash:
     coupon_applied: 'Coupon was successfully applied'
     fake_coupon: 'Unavailable coupon, please try another'
   notice:
     wrong_password: 'Please enter correct password'
-
   checkout:
     phone: 'Phone'
     save_and_continue: 'Save and Continue'
@@ -171,21 +166,25 @@ en:
     enter_email: 'Enter Email'
     new_customer: 'New Customer'
     quick_register: 'Quick Register'
-    quick_description: "You'll be able to create password later"
+    quick_description: 'You will be able to create password later'
     continue: 'Continue to Checkout'
-
-
   validation:
     card_number: 'Please enter a valid credit card number'
     card_name: 'Allow only letters'
     mm_yy: 'Mons can be from 01 to 12'
-
+    small_images: 'Wrong input, should be 3 photos'
+    address:
+      flccf_format: 'Must containts only letters'
+      address: 'Must containts letters, digits and spaces'
+      zip: 'Must containts only digits'
+      flccf_length: 'is too long (maximum is 50 characters)'
+      zip_length: 'is too long (maximum is 10 characters)'
   mailer:
-    new_passwd: 'Set new password'
-    pass_changed: "We're contacting you to notify you that your password has been changed."
-    pass_change: 'Someone has requested a link to change your password. You can do this through the link below.'
-    we_email_instration: 'We'll email you instructions on how to reset it'
     email: 'Your email:'
     password: 'Your password:'
     thanks: 'Thank you!'
     subject: 'Welcome to BookStore'
+    new_passwd: 'Set new password'
+    pass_changed: 'We are contacting you to notify you that your password has been changed.'
+    pass_change: 'Someone has requested a link to change your password. You can do this through the link below.'
+    we_email_instration: 'We will email you instructions on how to reset it'

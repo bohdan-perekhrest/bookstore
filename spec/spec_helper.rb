@@ -13,11 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require 'capybara/rspec'
 require 'factory_bot_rails'
-require 'pundit/matchers'
-Capybara.javascript_driver = :webkit
-Capybara.default_max_wait_time = 5
 
 
 RSpec.configure do |config|
@@ -98,12 +94,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-config.include FactoryBot::Syntax::Methods
-  config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-    DatabaseCleaner.strategy = :transaction
-  end
-
-  config.before(:each) { DatabaseCleaner.start }
-  config.after(:each) { DatabaseCleaner.clean }
 end

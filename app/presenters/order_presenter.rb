@@ -3,6 +3,14 @@
 class OrderPresenter < BasePresenter
   attr_reader :order
 
+  ORDER_STATUSES = {
+    in_progress: I18n.t('order.status.in_progress'),
+    in_queue: I18n.t('order.status.in_queue'),
+    in_delivery: I18n.t('order.status.in_delivery'),
+    delivered: I18n.t('order.status.delivered'),
+    canceled: I18n.t('order.status.canceled')
+  }.freeze
+
   def initialize(order)
     @order = order
   end
@@ -12,11 +20,19 @@ class OrderPresenter < BasePresenter
   end
 
   def sharp_number
-    "#{I18n.t('complete.order')} #{order.number}"
+    "#{I18n.t('complete.order')} #{order.decorate.number}"
+  end
+
+  def status
+    ORDER_STATUSES[order.status.to_sym]
+  end
+
+  def creation_date
+    order.decorate.creation_date
   end
 
   def delivery_name
-    order.delibery.name
+    order.delivery.name
   end
 
   def delivery_duration

@@ -1,11 +1,8 @@
 %main.container
-  #carouselExampleControls.carousel.slide{'data-ride': "carousel"}
-    %ol.carousel-indicators
+  #carousel.carousel.slide{'data-ride':"carousel"}
+    .carousel-inner
       - @latest_books.each.with_index(0) do |book_presenter, index|
-        %li.active{'data-target': "#carouselExampleControls", 'data-slide-to': index}
-    .carousel-inner{role: "listbox"}
-      - @latest_books.each.with_index(0) do |book_presenter, index|
-        .item{class: index.zero? ? 'active' : ''}
+        .item{class: "#{'active' if index.zero?}"}
           .row
             .col-sm-5
               .general-img-wrap
@@ -17,10 +14,10 @@
                 %p.lead.small= book_presenter.authors_full_names
                 .general-align
                   %button.disabled.btn= t('button.by_now')
-    %a.left.carousel-control{href: "#carouselExampleControls", role: "button", 'data-slide-to': "prev"}
+    %a.left.carousel-control{'data-bs-target':"#carousel", role: "button", 'data-bs-slide':"prev"}
       %span.icon-prev{'aria-hidden': "true"}
       %span.sr-only= t('page.home.carusel.prev')
-    %a.right.carousel-control{href: "#carouselExampleControls", role: "button", 'data-slide-to': "next"}
+    %a.right.carousel-control{'data-bs-target':"#carousel", role: "button", 'data-bs-slide':"next"}
       %span.icon-next{'aria-hidden': "true"}
       %span.sr-only= t('page.home.carusel.next')
   .container

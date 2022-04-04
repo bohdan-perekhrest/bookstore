@@ -1,8 +1,9 @@
-class BooksSetPresenter
+# frozen_string_literal: true
 
+class BooksSetPresenter
   SLICE_NUMBER = 4
 
-  def initialise(books)
+  def initialize(books:)
     @books = books.map { |book| BookPresenter.new(book) }
   end
 

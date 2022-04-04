@@ -1,8 +1,8 @@
 %main.container
   %h1.general-title-margin= t('page.book.index.catalog')
   .hidden-xs.clearfix
-    = render 'dropdown', locals: { dropdown_presenter: @dropdown_presenter }
-    = render 'categories', locals: { categories: @categories }
+    = render partial: 'dropdown', locals: { dropdown_presenter: @dropdown_presenter }
+    = render partial: 'categories', locals: { categories: @categories }
   .mb-120#books-container
     .row
       = render partial: 'books', locals: { books_set_presenter: @books_set_presenter }

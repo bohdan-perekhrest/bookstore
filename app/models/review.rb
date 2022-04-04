@@ -31,5 +31,7 @@ class Review < ApplicationRecord
   validates :title, :text, format: { with: %r{[\w\d\s]+[-!#$%&'*+/=?^_`{|}~.,]?} }
   validates :title, length: { maximum: TITLE_LENGTH }
   validates :text, length: { maximum: TEXT_LENGTH }
-  validates :star, numericality: { greater_than_or_equal_to: MIN_STAR_NUMBER, less_than_or_equal_to: MAX_STAR_NUMBER, only_integer: true }
+  validates :star,
+            numericality: { greater_than_or_equal_to: MIN_STAR_NUMBER, less_than_or_equal_to: MAX_STAR_NUMBER,
+                            only_integer: true }
 end

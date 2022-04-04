@@ -5,12 +5,25 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-
+  config.require_master_key = true
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'heroku.com',
+    user_name:            Rails.application.credentials.email[:user_name],
+    password:             Rails.application.credentials.email[:password],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: 'sheltered-hollows-02513.heroku.com' }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -38,7 +51,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon_prod
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil

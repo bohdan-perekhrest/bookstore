@@ -13,13 +13,11 @@
 /config/master.key
 /public/packs
 /public/packs-test
+/public/uploads
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
 .idea/bookstore.iml
-.idea
-public/uploads
-config/credentials.yml.enc
-.rspec
-coverage/
+/.idea
+/coverage/

@@ -4,7 +4,7 @@
     .row.mb-60
       .col-sm-5
         %p.in-gold-500.font-18.mb-25= t('settings.e-mail')
-        = simple_form_for(:user, url: privacy_path, method: :patch, html: {class: 'general-form-md'}) do |f|
+        = simple_form_for(resource, url: privacy_path, method: :patch, html: {class: 'general-form-md'}) do |f|
           = f.hidden_field :update_email, value: true
           .form-group.mb-35
             = f.label :email, class: 'control-label input-label'

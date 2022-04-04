@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def set_order_id
     session[:order_id] ||= Order.create.id
     order = Order.find_by(id: session[:order_id])
-    order.user = current_user if order.user_id.nil?
+    order.update(user: current_user) if order.user_id.nil?
   end
 
   def set_header_presenter

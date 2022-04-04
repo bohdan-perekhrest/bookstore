@@ -15,6 +15,7 @@
           - bill_errors = @addresses.billing.errors
           = render partial: 'address_form', locals: {ff: ff, errors: bill_errors}
           = f.hidden_field "[billing][order_id]", value: current_order.id
+          = f.hidden_field "[billing][user_id]", value: current_user.id
       .col-md-5.col-md-offset-1.mb-60
         .visible-xs.visible-sm
           %h3.general-subtitle= t('settings.shipping')
@@ -22,6 +23,7 @@
           - ship_errors = @addresses.shipping.errors
           = render partial: 'address_form', locals: {ff: ff, errors: ship_errors}
           = f.hidden_field "[billing][order_id]", value: current_order.id
+          = f.hidden_field "[billing][user_id]", value: current_user.id
         .form-group.checkbox
           %label.checkbox-label
             = f.check_box :use_billing, class: 'checkbox-input', id: 'use_billing', hidden: true
